@@ -42,7 +42,7 @@ const Section: React.FC<
             color: isDarkMode ? Colors.white : Colors.black,
           },
         ]}>
-        {title}
+        {title} It´´ working
       </Text>
       <Text
         style={[
