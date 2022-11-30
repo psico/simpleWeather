@@ -1,4 +1,4 @@
 # simple-weather
 Simple Weather app
 
-Simple app to see weather in current city using the user position
+Simple app to see weather in current user position
