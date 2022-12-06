@@ -4,6 +4,8 @@ import axios from 'axios';
 
 const Main = () => {
   const encodedParams = new URLSearchParams();
+  console.log('console.log(response.data); console.log(response.data);');
+
   encodedParams.append(
     'apiKey',
     '24d81cf917mshf57f1c543de525ep1d11d2jsn5809bb93c57a',
