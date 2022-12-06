@@ -4,8 +4,11 @@ import axios from 'axios';
 
 const Main = () => {
   const encodedParams = new URLSearchParams();
-  encodedParams.append('apiKey', '<REQUIRED>');
-  encodedParams.append('locationKey', '<REQUIRED>');
+  encodedParams.append(
+    'apiKey',
+    '24d81cf917mshf57f1c543de525ep1d11d2jsn5809bb93c57a',
+  );
+  encodedParams.append('locationKey', 'Brasilia');
 
   const options = {
     method: 'POST',
