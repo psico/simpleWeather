@@ -32,15 +32,15 @@ const Main = () => {
   //     console.error('wrong => ', error);
   //   });
 
-  encodedParams.append(
-    'apiKey',
-    '24d81cf917mshf57f1c543de525ep1d11d2jsn5809bb93c57a',
-  );
-  encodedParams.append('locationKey', 'Brasilia');
+  // encodedParams.append(
+  //   'apiKey',
+  //   '24d81cf917mshf57f1c543de525ep1d11d2jsn5809bb93c57a',
+  // );
+  // encodedParams.append('locationKey', 'Brasilia');
 
   const options = {
     method: 'GET',
-    url: 'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}',
+    url: 'https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid={API key}',
   };
 
   axios
