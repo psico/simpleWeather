@@ -58,8 +58,9 @@ const CurrentPosition = () => {
   };
 
   useEffect(() => {
+    console.log('callLocation chamado');
     callLocation();
-  });
+  }, []);
 
   return {
     currentLatitude,
