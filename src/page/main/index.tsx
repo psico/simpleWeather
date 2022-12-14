@@ -9,9 +9,19 @@ const Main = () => {
 
   const {currentLatitude, currentLongitude} = CurrentPosition();
 
+  // const options = {
+  //   method: 'GET',
+  //   url: `https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+  // };
+
+  console.log(
+    'URL => ',
+    `https://api.openweathermap.org/data/2.5/weather?lat=${currentLatitude}&lon=${currentLongitude}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+  );
+
   const options = {
     method: 'GET',
-    url: `https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+    url: `https://api.openweathermap.org/data/2.5/weather?lat=${currentLatitude}&lon=${currentLongitude}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
   };
 
   axios
@@ -29,12 +39,6 @@ const Main = () => {
       <Text>Você está Aqui</Text>
       <Text>Latitude: {currentLatitude}</Text>
       <Text>Longitude: {currentLongitude}</Text>
-      {/*<View>*/}
-      {/*  <Button title="Obter Localização" onPress={callLocation} />*/}
-      {/*</View>*/}
-      {/*<View>*/}
-      {/*  <Button title="Cancelar Monitoração" onPress={clearLocation} />*/}
-      {/*</View>*/}
     </View>
   );
 };
