@@ -1,4 +1,4 @@
-import React, {Text, View} from 'react-native';
+import React, {Text} from 'react-native';
 import Styles from './css';
 import axios from 'axios';
 import {REACT_APP_OPEN_WEATHER_API_KEY} from '@env';
@@ -33,12 +33,12 @@ const Main = () => {
 
   useEffect(() => {
     getWeatherCurrentPosition();
-  }, [getWeatherCurrentPosition]);
+  }, []);
 
   return (
     <LinearGradient
         colors={['#00d4ff', '#090979', '#020024']} style={Styles.body}
-        start={{x: 0.0, y: 0.15}} end={{x: 0.5, y: 0.75}}>
+        start={{x: 0.0, y: 0.15}} end={{x: 0.95, y: 0.75}}>
       <Text>Hello Main Page</Text>
       <Text>Você está Aqui</Text>
       <Text>Latitude: {currentLatitude}</Text>
