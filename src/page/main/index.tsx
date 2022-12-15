@@ -4,6 +4,7 @@ import axios from 'axios';
 import {REACT_APP_OPEN_WEATHER_API_KEY} from '@env';
 import CurrentPosition from '../../utils/CurrentPosition';
 import {useEffect, useState} from 'react';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Main = () => {
   console.info('Main component', REACT_APP_OPEN_WEATHER_API_KEY);
@@ -35,7 +36,9 @@ const Main = () => {
   }, [getWeatherCurrentPosition]);
 
   return (
-    <View style={Styles.body}>
+    <LinearGradient
+        colors={['#00d4ff', '#090979', '#020024']} style={Styles.body}
+        start={{x: 0.0, y: 0.15}} end={{x: 0.5, y: 0.75}}>
       <Text>Hello Main Page</Text>
       <Text>Você está Aqui</Text>
       <Text>Latitude: {currentLatitude}</Text>
@@ -48,7 +51,7 @@ const Main = () => {
       <Text>minima: {weather?.main?.temp_min}</Text>
       <Text>maxima: {weather?.main?.temp_max}</Text>
       <Text>humidade: {weather?.main?.humidity}</Text>
-    </View>
+    </LinearGradient>
   );
 };
 
