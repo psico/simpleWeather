@@ -1,4 +1,4 @@
-import React, {Text} from 'react-native';
+import React, {Image, Text, View} from 'react-native';
 import Styles from './css';
 import axios from 'axios';
 import {REACT_APP_OPEN_WEATHER_API_KEY} from '@env';
@@ -7,16 +7,25 @@ import {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
 const Main = () => {
-  console.info('Main component', REACT_APP_OPEN_WEATHER_API_KEY);
-  const [weather, setWeather] = useState({});
+  console.info('Main component');
+  const [weather, setWeather] = useState({
+    main: {
+      temp: '??',
+    },
+    weather: [
+      {
+        icon: '01d',
+        main: '',
+      },
+    ],
+  });
   const {currentLatitude, currentLongitude} = CurrentPosition();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getWeatherCurrentPosition = () => {
     if (currentLatitude && currentLongitude) {
       const options = {
         method: 'GET',
-        url: `https://api.openweathermap.org/data/2.5/weather?lat=${currentLatitude}&lon=${currentLongitude}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+        url: `https://api.openweathermap.org/data/2.5/weather?lat=${currentLatitude}&lon=${currentLongitude}&units=metric&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
       };
 
       axios
@@ -33,24 +42,57 @@ const Main = () => {
 
   useEffect(() => {
     getWeatherCurrentPosition();
-  }, []);
+  }, [currentLatitude, currentLongitude]);
 
   return (
     <LinearGradient
-        colors={['#00d4ff', '#090979', '#020024']} style={Styles.body}
-        start={{x: 0.0, y: 0.15}} end={{x: 0.95, y: 0.75}}>
-      <Text>Hello Main Page</Text>
-      <Text>Você está Aqui</Text>
-      <Text>Latitude: {currentLatitude}</Text>
-      <Text>Longitude: {currentLongitude}</Text>
-      <Text>País: {weather?.sys?.country}</Text>
-      <Text>City: {weather?.name}</Text>
-      <Text>clouds: {weather?.clouds?.all}</Text>
-      <Text>temperatura atual: {weather?.main?.temp}</Text>
-      <Text>sensação termica: {weather?.main?.feels_like}</Text>
-      <Text>minima: {weather?.main?.temp_min}</Text>
-      <Text>maxima: {weather?.main?.temp_max}</Text>
-      <Text>humidade: {weather?.main?.humidity}</Text>
+      colors={['#00d4ff', '#090979', '#020024']}
+      style={Styles.body}
+      start={{x: 0.0, y: 0.15}}
+      end={{x: 0.95, y: 0.75}}>
+      <View>
+        <Text style={Styles.textHeader}>{weather?.name}</Text>
+        <Text style={Styles.textSmall}>{new Date().toGMTString()}</Text>
+        <Image
+          style={[Styles.logo, Styles.textDefault]}
+          source={{
+            uri: `https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`,
+          }}
+        />
+        <Text style={Styles.textDefault}>{weather?.main?.temp}º {weather?.weather[0]?.main}</Text>
+      </View>
+
+      <View style={Styles.card}>
+        <View style={Styles.body}>
+          <Text style={Styles.textDefault}>sensação termica</Text>
+          <Text style={Styles.textDefault}>{weather?.main?.feels_like}</Text>
+        </View>
+        <View style={Styles.body}>
+          <Text style={Styles.textDefault}>minima</Text>
+          <Text style={Styles.textDefault}>{weather?.main?.temp_min}</Text>
+        </View>
+        <View style={Styles.body}>
+          <Text style={Styles.textDefault}>maxima</Text>
+          <Text style={Styles.textDefault}>{weather?.main?.temp_max}</Text>
+        </View>
+      </View>
+
+      <View style={Styles.card}>
+        {/*<Text style={Styles.textDefault}>Latitude: {currentLatitude}</Text>*/}
+        {/*<Text style={Styles.textDefault}>Longitude: {currentLongitude}</Text>*/}
+        <View style={Styles.body}>
+          <Text style={Styles.textDefault}>País</Text>
+          <Text style={Styles.textDefault}>{weather?.sys?.country}</Text>
+        </View>
+        <View style={Styles.body}>
+          <Text style={Styles.textDefault}>clouds</Text>
+          <Text style={Styles.textDefault}>{weather?.clouds?.all}</Text>
+        </View>
+        <View style={Styles.body}>
+          <Text style={Styles.textDefault}>humidade</Text>
+          <Text style={Styles.textDefault}>{weather?.main?.humidity}</Text>
+        </View>
+      </View>
     </LinearGradient>
   );
 };
