@@ -15,17 +15,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textHeader: {
-    fontFamily: 'Trebuchet MS, Verdana, sans-serif',
+    fontFamily: 'Verdana',
     fontSize: 30,
     color: '#FFFFFF',
   },
   textSmall: {
-    fontFamily: 'Trebuchet MS, Verdana, sans-serif',
+    fontFamily: 'Verdana',
     fontSize: 15,
     color: '#FFFFFF',
   },
   textDefault: {
-    fontFamily: 'Trebuchet MS, Verdana, sans-serif',
+    fontFamily: 'Verdana',
     fontSize: 20,
     color: '#FFFFFF',
   },
