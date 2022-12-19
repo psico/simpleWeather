@@ -50,7 +50,7 @@ const Main = () => {
       style={Styles.body}
       start={{x: 0.0, y: 0.15}}
       end={{x: 0.95, y: 0.75}}>
-      <View>
+      <View style={Styles.transparence}>
         <Text style={Styles.textHeader}>{weather?.name}</Text>
         <Text style={Styles.textSmall}>{new Date().toGMTString()}</Text>
         <Image
@@ -59,10 +59,12 @@ const Main = () => {
             uri: `https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`,
           }}
         />
-        <Text style={Styles.textDefault}>{weather?.main?.temp}º {weather?.weather[0]?.main}</Text>
+        <Text style={Styles.textDefault}>
+          {weather?.main?.temp}º {weather?.weather[0]?.main}
+        </Text>
       </View>
 
-      <View style={Styles.card}>
+      <View style={[Styles.card, Styles.transparence]}>
         <View style={Styles.body}>
           <Text style={Styles.textDefault}>sensação termica</Text>
           <Text style={Styles.textDefault}>{weather?.main?.feels_like}</Text>
@@ -77,7 +79,7 @@ const Main = () => {
         </View>
       </View>
 
-      <View style={Styles.card}>
+      <View style={[Styles.card, Styles.transparence]}>
         {/*<Text style={Styles.textDefault}>Latitude: {currentLatitude}</Text>*/}
         {/*<Text style={Styles.textDefault}>Longitude: {currentLongitude}</Text>*/}
         <View style={Styles.body}>
