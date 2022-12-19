@@ -46,7 +46,7 @@ const Main = () => {
 
   return (
     <LinearGradient
-      colors={['#00d4ff', '#090979', '#020024']}
+      colors={['#00d4ff', '#2d2dad', '#171498']}
       style={Styles.body}
       start={{x: 0.0, y: 0.15}}
       end={{x: 0.95, y: 0.75}}>
@@ -64,34 +64,35 @@ const Main = () => {
         </Text>
       </View>
 
-      <View style={[Styles.card, Styles.transparence]}>
-        <View style={Styles.body}>
-          <Text style={Styles.textDefault}>sensação termica</Text>
+      <View style={Styles.card}>
+        <View style={[Styles.body, Styles.transparence]}>
+          <Text style={Styles.textDefault}>Sens. term.</Text>
           <Text style={Styles.textDefault}>{weather?.main?.feels_like}</Text>
         </View>
-        <View style={Styles.body}>
+        <View style={[Styles.body, Styles.transparence]}>
           <Text style={Styles.textDefault}>minima</Text>
           <Text style={Styles.textDefault}>{weather?.main?.temp_min}</Text>
         </View>
-        <View style={Styles.body}>
+      </View>
+
+      <View style={Styles.card}>
+        <View style={[Styles.body, Styles.transparence]}>
           <Text style={Styles.textDefault}>maxima</Text>
           <Text style={Styles.textDefault}>{weather?.main?.temp_max}</Text>
         </View>
+        <View style={[Styles.body, Styles.transparence]}>
+          <Text style={Styles.textDefault}>Vento</Text>
+          <Text style={Styles.textDefault}>{weather?.wind?.speed}</Text>
+        </View>
       </View>
 
-      <View style={[Styles.card, Styles.transparence]}>
-        {/*<Text style={Styles.textDefault}>Latitude: {currentLatitude}</Text>*/}
-        {/*<Text style={Styles.textDefault}>Longitude: {currentLongitude}</Text>*/}
-        <View style={Styles.body}>
-          <Text style={Styles.textDefault}>País</Text>
-          <Text style={Styles.textDefault}>{weather?.sys?.country}</Text>
+      <View style={Styles.card}>
+        <View style={[Styles.body, Styles.transparence]}>
+          <Text style={Styles.textDefault}>Pressure</Text>
+          <Text style={Styles.textDefault}>{weather?.main?.pressure}</Text>
         </View>
-        <View style={Styles.body}>
-          <Text style={Styles.textDefault}>clouds</Text>
-          <Text style={Styles.textDefault}>{weather?.clouds?.all}</Text>
-        </View>
-        <View style={Styles.body}>
-          <Text style={Styles.textDefault}>humidade</Text>
+        <View style={[Styles.body, Styles.transparence]}>
+          <Text style={Styles.textDefault}>Humidade</Text>
           <Text style={Styles.textDefault}>{weather?.main?.humidity}</Text>
         </View>
       </View>

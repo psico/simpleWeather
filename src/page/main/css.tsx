@@ -4,12 +4,14 @@ const styles = StyleSheet.create({
   body: {
     display: 'flex',
     flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: 'center',
+    // alignItems: 'center',
+    // alignContent: 'center',
+    // alignSelf: 'center',
   },
   transparence: {
     borderRadius: 15,
-    padding: 10,
+    border: 10,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
   },
   card: {
