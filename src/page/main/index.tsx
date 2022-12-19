@@ -50,7 +50,7 @@ const Main = () => {
       style={Styles.body}
       start={{x: 0.0, y: 0.15}}
       end={{x: 0.95, y: 0.75}}>
-      <View style={Styles.transparence}>
+      <View style={[Styles.transparenceMain, Styles.mainCard]}>
         <Text style={Styles.textHeader}>{weather?.name}</Text>
         <Text style={Styles.textSmall}>{new Date().toGMTString()}</Text>
         <Image
@@ -65,33 +65,33 @@ const Main = () => {
       </View>
 
       <View style={Styles.card}>
-        <View style={[Styles.body, Styles.transparence]}>
+        <View style={[Styles.transparence]}>
           <Text style={Styles.textDefault}>Sens. term.</Text>
           <Text style={Styles.textDefault}>{weather?.main?.feels_like}</Text>
         </View>
-        <View style={[Styles.body, Styles.transparence]}>
+        <View style={[Styles.transparence]}>
           <Text style={Styles.textDefault}>minima</Text>
           <Text style={Styles.textDefault}>{weather?.main?.temp_min}</Text>
         </View>
       </View>
 
       <View style={Styles.card}>
-        <View style={[Styles.body, Styles.transparence]}>
+        <View style={[Styles.transparence]}>
           <Text style={Styles.textDefault}>maxima</Text>
           <Text style={Styles.textDefault}>{weather?.main?.temp_max}</Text>
         </View>
-        <View style={[Styles.body, Styles.transparence]}>
+        <View style={[Styles.transparence]}>
           <Text style={Styles.textDefault}>Vento</Text>
           <Text style={Styles.textDefault}>{weather?.wind?.speed}</Text>
         </View>
       </View>
 
       <View style={Styles.card}>
-        <View style={[Styles.body, Styles.transparence]}>
+        <View style={[Styles.transparence]}>
           <Text style={Styles.textDefault}>Pressure</Text>
           <Text style={Styles.textDefault}>{weather?.main?.pressure}</Text>
         </View>
-        <View style={[Styles.body, Styles.transparence]}>
+        <View style={[Styles.transparence]}>
           <Text style={Styles.textDefault}>Humidade</Text>
           <Text style={Styles.textDefault}>{weather?.main?.humidity}</Text>
         </View>
