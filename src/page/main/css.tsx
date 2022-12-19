@@ -4,21 +4,37 @@ const styles = StyleSheet.create({
   body: {
     display: 'flex',
     flex: 1,
-    justifyContent: 'center',
+    flexDirection: 'column',
+    // justifyContent: 'center',
+    // padding: 15,
+    // alignContent: 'space-between',
     // alignItems: 'center',
     // alignContent: 'center',
     // alignSelf: 'center',
   },
-  transparence: {
+  transparenceMain: {
     borderRadius: 15,
-    border: 10,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
+    margin: 5,
+  },
+  transparence: {
+    display: 'flex',
+    flex: 1,
+    borderRadius: 15,
+    backgroundColor: 'rgba(52, 52, 52, 0.3)',
+    margin: 5,
+  },
+  mainCard: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
   },
   card: {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
   textHeader: {
