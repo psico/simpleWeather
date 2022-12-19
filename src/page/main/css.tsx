@@ -7,6 +7,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  transparence: {
+    borderRadius: 15,
+    padding: 10,
+    backgroundColor: 'rgba(52, 52, 52, 0.3)',
+  },
   card: {
     display: 'flex',
     flexDirection: 'row',
