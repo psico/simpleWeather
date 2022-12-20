@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
     margin: 5,
+    padding: 15,
   },
   transparence: {
     display: 'flex',
@@ -23,6 +24,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
     margin: 5,
+    padding: 15,
   },
   mainCard: {
     display: 'flex',
