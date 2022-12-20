@@ -54,35 +54,35 @@ const Main = () => {
         <Text style={Styles.textHeader}>{weather?.name}</Text>
         <Text style={Styles.textSmall}>{new Date().toGMTString()}</Text>
         <Image
-          style={[Styles.logo, Styles.textDefault]}
+          style={Styles.logo}
           source={{
             uri: `https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`,
           }}
         />
-        <Text style={Styles.textDefault}>
+        <Text style={Styles.textHeader}>
           {weather?.main?.temp}º {weather?.weather[0]?.main}
         </Text>
       </View>
 
       <View style={Styles.card}>
         <View style={[Styles.transparence]}>
-          <Text style={Styles.textDefault}>Sens. term.</Text>
+          <Text style={Styles.textDefault}>Sensação Term.</Text>
           <Text style={Styles.textDefault}>{weather?.main?.feels_like}</Text>
         </View>
         <View style={[Styles.transparence]}>
-          <Text style={Styles.textDefault}>minima</Text>
-          <Text style={Styles.textDefault}>{weather?.main?.temp_min}</Text>
+          <Text style={Styles.textDefault}>Vento</Text>
+          <Text style={Styles.textDefault}>{weather?.wind?.speed}</Text>
         </View>
       </View>
 
       <View style={Styles.card}>
         <View style={[Styles.transparence]}>
-          <Text style={Styles.textDefault}>maxima</Text>
-          <Text style={Styles.textDefault}>{weather?.main?.temp_max}</Text>
+          <Text style={Styles.textDefault}>Mínima</Text>
+          <Text style={Styles.textDefault}>{weather?.main?.temp_min}</Text>
         </View>
         <View style={[Styles.transparence]}>
-          <Text style={Styles.textDefault}>Vento</Text>
-          <Text style={Styles.textDefault}>{weather?.wind?.speed}</Text>
+          <Text style={Styles.textDefault}>Máxima</Text>
+          <Text style={Styles.textDefault}>{weather?.main?.temp_max}</Text>
         </View>
       </View>
 
