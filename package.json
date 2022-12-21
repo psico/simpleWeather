@@ -12,9 +12,12 @@
   "dependencies": {
     "@react-native-community/geolocation": "^3.0.4",
     "axios": "^0.27.2",
+    "metro-config": "^0.73.6",
     "react": "18.1.0",
     "react-native": "0.70.5",
-    "react-native-linear-gradient": "^2.6.2"
+    "react-native-linear-gradient": "^2.6.2",
+    "react-native-svg": "^13.6.0",
+    "react-native-svg-transformer": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
