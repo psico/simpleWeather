@@ -83,43 +83,11 @@ const Main = () => {
       <View style={[Styles.transparenceMain, Styles.mainCard]} height="65%">
         <Text style={Styles.textHeader}>{weather?.name}</Text>
         <Text style={Styles.textSmall}>{new Date().toGMTString()}</Text>
-        {/*<Image*/}
-        {/*  style={Styles.logo}*/}
-        {/*  source={{*/}
-        {/*    uri: `https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`,*/}
-        {/*  }}*/}
-        {/*/>*/}
-
-        {/*<View style={Styles.logo}>*/}
-        {/*  <Svg*/}
-        {/*    height="100%"*/}
-        {/*    width="100%"*/}
-        {/*    viewBox="1 -1 30 30"*/}
-        {/*    fill="none"*/}
-        {/*    xmlns="http://www.w3.org/2000/svg">*/}
-        {/*    <ClearDay />*/}
-        {/*  </Svg>*/}
-        {/*</View>*/}
 
         <View style={Styles.logo}>
           <ClearDay height="100%" width="100%" viewBox="1 -1 30 30" />
         </View>
 
-        {/*<Animated.View style={[Styles.logo, animatedStyle]}>*/}
-        {/*  <ClearDay height="100%" width="100%" viewBox="1 -1 30 30" />*/}
-        {/*</Animated.View>*/}
-
-        {/*<Animated.View style={Styles.logo}>*/}
-        {/*  <ClearDay height="100%" width="100%" viewBox="1 -1 30 30" />*/}
-        {/*</Animated.View>*/}
-
-        {/*<View style={Styles.logo}>*/}
-        {/*  <LocalSvg*/}
-        {/*    width="100%"*/}
-        {/*    height="100%"*/}
-        {/*    xml='../../../public/weatherIcons/clear-day.svg'*/}
-        {/*  />*/}
-        {/*</View>*/}
         <Text style={Styles.textHeader}>
           {weather?.main?.temp}º {weather?.weather[0]?.main}
         </Text>
