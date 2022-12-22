@@ -1,14 +1,11 @@
-import React, {Text, View, Animated, Image} from 'react-native';
+import React, {Text, View} from 'react-native';
 import Styles from './css';
 import axios from 'axios';
 import {REACT_APP_OPEN_WEATHER_API_KEY} from '@env';
 import CurrentPosition from '../../utils/CurrentPosition';
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import ClearDay from '../../../public/weatherIcons/clear-day.svg';
-import Svg, {Path} from 'react-native-svg';
-
-const animatedValue = new Animated.Value(1);
+import iconSelector from '../../components/iconSelector';
 
 const Main = () => {
   console.info('Main component');
@@ -44,35 +41,9 @@ const Main = () => {
     }
   };
 
-  const interpolateRotation = animatedValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['360deg', '0deg'],
-  });
-
-  const animatedStyle = {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    transform: [{rotate: interpolateRotation}],
-  };
-
-  const startAnimation = () => {
-    animatedValue.setValue(0);
-    Animated.timing(animatedValue, {
-      toValue: 1,
-      duration: 1500,
-      useNativeDriver: true,
-      easing: () => 10,
-    }).start(() => startAnimation());
-  };
-
   useEffect(() => {
     getWeatherCurrentPosition();
   }, [currentLatitude, currentLongitude]);
-
-  useEffect(() => {
-    startAnimation();
-  }, []);
 
   return (
     <LinearGradient
@@ -84,9 +55,7 @@ const Main = () => {
         <Text style={Styles.textHeader}>{weather?.name}</Text>
         <Text style={Styles.textSmall}>{new Date().toGMTString()}</Text>
 
-        <View style={Styles.logo}>
-          <ClearDay height="100%" width="100%" viewBox="1 -1 30 30" />
-        </View>
+        <View style={Styles.logo}>{iconSelector({weatherId: '200'})}</View>
 
         <Text style={Styles.textHeader}>
           {weather?.main?.temp}º {weather?.weather[0]?.main}
