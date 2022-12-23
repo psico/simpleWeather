@@ -55,7 +55,7 @@ const Main = () => {
         <Text style={Styles.textHeader}>{weather?.name}</Text>
         <Text style={Styles.textSmall}>{new Date().toGMTString()}</Text>
 
-        <View style={Styles.logo}>{iconSelector({weatherId: '200'})}</View>
+        <View style={Styles.logo}>{iconSelector({weatherId: '803'})}</View>
 
         <Text style={Styles.textHeader}>
           {weather?.main?.temp}º {weather?.weather[0]?.main}
