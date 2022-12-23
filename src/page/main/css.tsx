@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
     margin: 5,
-    padding: 15,
+    padding: 8,
   },
   mainCard: {
     display: 'flex',
