@@ -1,4 +1,4 @@
-import React, {Text, View} from 'react-native';
+import React, {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import Styles from './css';
 import axios from 'axios';
 import {REACT_APP_OPEN_WEATHER_API_KEY} from '@env';
@@ -9,12 +9,17 @@ import iconSelector from '../../components/iconSelector';
 
 const Main = () => {
   console.info('Main component');
+  // @ts-ignore
+  const [currentDate, setCurrentDate] = useState(new Date().toGMTString());
   const [weather, setWeather] = useState({
+    name: '',
     main: {
+      feels_like: '',
       temp: '??',
     },
     weather: [
       {
+        id: '',
         icon: '01d',
         main: '',
       },
@@ -51,51 +56,57 @@ const Main = () => {
       style={Styles.body}
       start={{x: 0.0, y: 0.15}}
       end={{x: 0.95, y: 0.75}}>
-      <View style={[Styles.transparenceMain, Styles.mainCard]} height="65%">
-        <Text style={Styles.textHeader}>{weather?.name}</Text>
-        <Text style={Styles.textSmall}>{new Date().toGMTString()}</Text>
+      <SafeAreaView>
+        <ScrollView>
+          <View style={Styles.transparenceMainCard}>
+            <Text style={Styles.textHeader}>{weather?.name}</Text>
+            <Text style={Styles.textSmall}>{currentDate}</Text>
 
-        <View style={Styles.logo}>
-          {iconSelector({weatherId: weather?.weather[0]?.id})}
-        </View>
+            <View style={Styles.logo}>
+              {iconSelector({weatherId: weather?.weather[0]?.id})}
+            </View>
 
-        <Text style={Styles.textHeader}>
-          {weather?.main?.temp}º {weather?.weather[0]?.main}
-        </Text>
-      </View>
+            <Text style={Styles.textHeader}>
+              {weather?.main?.temp}º {weather?.weather[0]?.main}
+            </Text>
+          </View>
 
-      <View style={Styles.card}>
-        <View style={[Styles.transparence]}>
-          <Text style={Styles.textDefault}>Sensação Term.</Text>
-          <Text style={Styles.textDefault}>{weather?.main?.feels_like}</Text>
-        </View>
-        <View style={[Styles.transparence]}>
-          <Text style={Styles.textDefault}>Vento</Text>
-          <Text style={Styles.textDefault}>{weather?.wind?.speed}</Text>
-        </View>
-      </View>
+          <View style={Styles.card}>
+            <View style={[Styles.transparence]}>
+              <Text style={Styles.textDefault}>Feels Like</Text>
+              <Text style={Styles.textDefault}>
+                {weather?.main?.feels_like}
+              </Text>
+            </View>
+            <View style={[Styles.transparence]}>
+              <Text style={Styles.textDefault}>Wind Speed</Text>
+              <Text style={Styles.textDefault}>{weather?.wind?.speed}</Text>
+            </View>
+          </View>
 
-      <View style={Styles.card}>
-        <View style={[Styles.transparence]}>
-          <Text style={Styles.textDefault}>Mínima</Text>
-          <Text style={Styles.textDefault}>{weather?.main?.temp_min}</Text>
-        </View>
-        <View style={[Styles.transparence]}>
-          <Text style={Styles.textDefault}>Máxima</Text>
-          <Text style={Styles.textDefault}>{weather?.main?.temp_max}</Text>
-        </View>
-      </View>
+          <View style={Styles.card}>
+            <View style={[Styles.transparence]}>
+              <Text style={Styles.textDefault}>Minimum</Text>
+              <Text style={Styles.textDefault}>{weather?.main?.temp_min}</Text>
+            </View>
+            <View style={[Styles.transparence]}>
+              <Text style={Styles.textDefault}>Maximum</Text>
+              <Text style={Styles.textDefault}>{weather?.main?.temp_max}</Text>
+            </View>
+          </View>
 
-      <View style={Styles.card}>
-        <View style={[Styles.transparence]}>
-          <Text style={Styles.textDefault}>Pressure</Text>
-          <Text style={Styles.textDefault}>{weather?.main?.pressure}</Text>
-        </View>
-        <View style={[Styles.transparence]}>
-          <Text style={Styles.textDefault}>Humidade</Text>
-          <Text style={Styles.textDefault}>{weather?.main?.humidity}</Text>
-        </View>
-      </View>
+          <View style={Styles.card}>
+            <View style={[Styles.transparence]}>
+              <Text style={Styles.textDefault}>Pressure</Text>
+              <Text style={Styles.textDefault}>{weather?.main?.pressure}</Text>
+            </View>
+            <View style={[Styles.transparence]}>
+              <Text style={Styles.textDefault}>Humidity</Text>
+              <Text style={Styles.textDefault}>{weather?.main?.humidity}</Text>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
