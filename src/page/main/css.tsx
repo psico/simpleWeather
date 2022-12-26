@@ -4,15 +4,13 @@ const styles = StyleSheet.create({
   body: {
     display: 'flex',
     flex: 1,
-    flexDirection: 'column',
-    // justifyContent: 'center',
-    // padding: 15,
-    // alignContent: 'space-between',
-    // alignItems: 'center',
-    // alignContent: 'center',
-    // alignSelf: 'center',
   },
-  transparenceMain: {
+  transparenceMainCard: {
+    display: 'flex',
+    flex: 1,
+    // flexDirection: 'column',
+    // justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 15,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
     margin: 5,
@@ -24,14 +22,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
     margin: 5,
-    padding: 8,
-  },
-  mainCard: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
+    padding: 15,
   },
   card: {
     display: 'flex',
