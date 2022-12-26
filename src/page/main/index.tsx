@@ -9,13 +9,17 @@ import iconSelector from '../../components/iconSelector';
 
 const Main = () => {
   console.info('Main component');
-  // @ts-ignore
-  const [currentDate, setCurrentDate] = useState(new Date().toGMTString());
+
+  const [currentDate, setCurrentDate] = useState(null);
   const [weather, setWeather] = useState({
     name: '',
     main: {
       feels_like: '',
       temp: '??',
+      temp_min: null,
+      temp_max: null,
+      pressure: null,
+      humidity: null,
     },
     weather: [
       {
@@ -24,6 +28,9 @@ const Main = () => {
         main: '',
       },
     ],
+    wind: {
+      speed: '',
+    },
   });
   const {currentLatitude, currentLongitude} = CurrentPosition();
 
@@ -45,6 +52,11 @@ const Main = () => {
         });
     }
   };
+
+  useEffect(() => {
+    // @ts-ignore
+    setCurrentDate(new Date().toGMTString());
+  }, []);
 
   useEffect(() => {
     getWeatherCurrentPosition();
