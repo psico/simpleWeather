@@ -8,29 +8,165 @@ import LinearGradient from 'react-native-linear-gradient';
 import iconSelector from '../../components/iconSelector';
 
 const Main = () => {
+  // console.info('Main component');
+  //
+  // const [currentDate, setCurrentDate] = useState(null);
+  // const [weather, setWeather] = useState({
+  //   name: '',
+  //   main: {
+  //     feels_like: '',
+  //     temp: '??',
+  //     temp_min: null,
+  //     temp_max: null,
+  //     pressure: null,
+  //     humidity: null,
+  //   },
+  //   weather: [
+  //     {
+  //       id: '',
+  //       icon: '01d',
+  //       main: '',
+  //     },
+  //   ],
+  //   wind: {
+  //     speed: '',
+  //   },
+  // });
+  // const {currentLatitude, currentLongitude} = CurrentPosition();
+  //
+  // const getWeatherCurrentPosition = () => {
+  //   if (currentLatitude && currentLongitude) {
+  //     const options = {
+  //       method: 'GET',
+  //       url: `https://api.openweathermap.org/data/2.5/weather?lat=${currentLatitude}&lon=${currentLongitude}&units=metric&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+  //     };
+  //
+  //     axios
+  //       .request(options)
+  //       .then(function (response) {
+  //         console.log('right => ', response.data);
+  //         setWeather(response.data);
+  //       })
+  //       .catch(function (error) {
+  //         console.error('wrong => ', error);
+  //       });
+  //   }
+  // };
+  //
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   setCurrentDate(new Date().toGMTString());
+  // }, []);
+  //
+  // useEffect(() => {
+  //   getWeatherCurrentPosition();
+  // }, [currentLatitude, currentLongitude]);
+  //
+  // return (
+  //   <LinearGradient
+  //     colors={['#00d4ff', '#2d2dad', '#171498']}
+  //     style={Styles.body}
+  //     start={{x: 0.0, y: 0.15}}
+  //     end={{x: 0.95, y: 0.75}}>
+  //     <SafeAreaView>
+  //       <ScrollView>
+  //         <View style={Styles.transparenceMainCard}>
+  //           <Text style={Styles.textHeader}>{weather?.name}</Text>
+  //           <Text style={Styles.textSmall}>{currentDate}</Text>
+  //
+  //           <View style={Styles.logo}>
+  //             {iconSelector({weatherId: weather?.weather[0]?.id})}
+  //           </View>
+  //
+  //           <Text style={Styles.textHeader}>
+  //             {weather?.main?.temp}º {weather?.weather[0]?.main}
+  //           </Text>
+  //         </View>
+  //
+  //         <View style={Styles.card}>
+  //           <View style={[Styles.transparence]}>
+  //             <Text style={Styles.textDefault}>Feels Like</Text>
+  //             <Text style={Styles.textDefault}>
+  //               {weather?.main?.feels_like}
+  //             </Text>
+  //           </View>
+  //           <View style={[Styles.transparence]}>
+  //             <Text style={Styles.textDefault}>Wind Speed</Text>
+  //             <Text style={Styles.textDefault}>{weather?.wind?.speed}</Text>
+  //           </View>
+  //         </View>
+  //
+  //         <View style={Styles.card}>
+  //           <View style={[Styles.transparence]}>
+  //             <Text style={Styles.textDefault}>Minimum</Text>
+  //             <Text style={Styles.textDefault}>{weather?.main?.temp_min}</Text>
+  //           </View>
+  //           <View style={[Styles.transparence]}>
+  //             <Text style={Styles.textDefault}>Maximum</Text>
+  //             <Text style={Styles.textDefault}>{weather?.main?.temp_max}</Text>
+  //           </View>
+  //         </View>
+  //
+  //         <View style={Styles.card}>
+  //           <View style={[Styles.transparence]}>
+  //             <Text style={Styles.textDefault}>Pressure</Text>
+  //             <Text style={Styles.textDefault}>{weather?.main?.pressure}</Text>
+  //           </View>
+  //           <View style={[Styles.transparence]}>
+  //             <Text style={Styles.textDefault}>Humidity</Text>
+  //             <Text style={Styles.textDefault}>{weather?.main?.humidity}</Text>
+  //           </View>
+  //         </View>
+  //       </ScrollView>
+  //     </SafeAreaView>
+  //   </LinearGradient>
+  // );
+
   console.info('Main component');
 
+  const [unit, setUnit] = useState('');
   const [currentDate, setCurrentDate] = useState(null);
   const [weather, setWeather] = useState({
-    name: '',
-    main: {
-      feels_like: '',
-      temp: '??',
-      temp_min: null,
-      temp_max: null,
-      pressure: null,
-      humidity: null,
+    cod: '',
+    city: {
+      id: null,
+      name: '',
+      coord: {
+        lat: null,
+        lon: null,
+      },
+      country: '',
+      population: null,
+      timezone: null,
+      sunrise: null,
+      sunset: null,
     },
-    weather: [
+    list: [
       {
-        id: '',
-        icon: '01d',
-        main: '',
+        dt: null,
+        main: {
+          temp: null,
+          feels_like: null,
+          temp_min: null,
+          temp_max: null,
+          pressure: null,
+          humidity: null,
+          temp_kf: 1.71,
+        },
+        weather: [
+          {
+            id: null,
+            main: '',
+            description: '',
+            icon: '10d',
+          },
+        ],
+        wind: {
+          speed: 2.64,
+        },
+        dt_txt: '',
       },
     ],
-    wind: {
-      speed: '',
-    },
   });
   const {currentLatitude, currentLongitude} = CurrentPosition();
 
@@ -38,7 +174,7 @@ const Main = () => {
     if (currentLatitude && currentLongitude) {
       const options = {
         method: 'GET',
-        url: `https://api.openweathermap.org/data/2.5/weather?lat=${currentLatitude}&lon=${currentLongitude}&units=metric&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+        url: `https://api.openweathermap.org/data/2.5/forecast?lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
       };
 
       axios
@@ -54,6 +190,7 @@ const Main = () => {
   };
 
   useEffect(() => {
+    setUnit('metric');
     // @ts-ignore
     setCurrentDate(new Date().toGMTString());
   }, []);
@@ -71,15 +208,15 @@ const Main = () => {
       <SafeAreaView>
         <ScrollView>
           <View style={Styles.transparenceMainCard}>
-            <Text style={Styles.textHeader}>{weather?.name}</Text>
+            <Text style={Styles.textHeader}>{weather.city.name}</Text>
             <Text style={Styles.textSmall}>{currentDate}</Text>
 
             <View style={Styles.logo}>
-              {iconSelector({weatherId: weather?.weather[0]?.id})}
+              {iconSelector({weatherId: weather.list[0].weather[0].id})}
             </View>
 
             <Text style={Styles.textHeader}>
-              {weather?.main?.temp}º {weather?.weather[0]?.main}
+              {weather.list[0].main.temp}º {weather.list[0].weather[0].main}
             </Text>
           </View>
 
@@ -87,34 +224,44 @@ const Main = () => {
             <View style={[Styles.transparence]}>
               <Text style={Styles.textDefault}>Feels Like</Text>
               <Text style={Styles.textDefault}>
-                {weather?.main?.feels_like}
+                {weather.list[0].main.feels_like}
               </Text>
             </View>
             <View style={[Styles.transparence]}>
               <Text style={Styles.textDefault}>Wind Speed</Text>
-              <Text style={Styles.textDefault}>{weather?.wind?.speed}</Text>
+              <Text style={Styles.textDefault}>
+                {weather.list[0].wind.speed}
+              </Text>
             </View>
           </View>
 
           <View style={Styles.card}>
             <View style={[Styles.transparence]}>
               <Text style={Styles.textDefault}>Minimum</Text>
-              <Text style={Styles.textDefault}>{weather?.main?.temp_min}</Text>
+              <Text style={Styles.textDefault}>
+                {weather.list[0].main.temp_min}
+              </Text>
             </View>
             <View style={[Styles.transparence]}>
               <Text style={Styles.textDefault}>Maximum</Text>
-              <Text style={Styles.textDefault}>{weather?.main?.temp_max}</Text>
+              <Text style={Styles.textDefault}>
+                {weather.list[0].main.temp_max}
+              </Text>
             </View>
           </View>
 
           <View style={Styles.card}>
             <View style={[Styles.transparence]}>
               <Text style={Styles.textDefault}>Pressure</Text>
-              <Text style={Styles.textDefault}>{weather?.main?.pressure}</Text>
+              <Text style={Styles.textDefault}>
+                {weather.list[0].main.pressure}
+              </Text>
             </View>
             <View style={[Styles.transparence]}>
               <Text style={Styles.textDefault}>Humidity</Text>
-              <Text style={Styles.textDefault}>{weather?.main?.humidity}</Text>
+              <Text style={Styles.textDefault}>
+                {weather.list[0].main.humidity}
+              </Text>
             </View>
           </View>
         </ScrollView>
