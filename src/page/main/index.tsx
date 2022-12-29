@@ -83,7 +83,7 @@ const Main = () => {
 
   useEffect(() => {
     getWeatherCurrentPosition();
-    setInterval(getWeatherCurrentPosition, 6000);
+    setInterval(getWeatherCurrentPosition, 60000);
   }, [currentLatitude, currentLongitude]);
 
   return (
