@@ -41,7 +41,7 @@ const CurrentPosition = () => {
         setCurrentLatitude(currentLatitude);
         setCurrentLongitude(currentLongitude);
       },
-      error => console.warn('deu erro', error.message),
+      error => console.warn('ERROR: ', error.message),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
     );
     const watchID = Geolocation.watchPosition(position => {

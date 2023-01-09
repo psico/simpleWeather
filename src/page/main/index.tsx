@@ -66,7 +66,6 @@ const Main = () => {
       axios
         .request(options)
         .then(function (response) {
-          console.log('right => ', response.data);
           setWeather(response.data);
         })
         .catch(function (error) {
@@ -84,6 +83,8 @@ const Main = () => {
   useEffect(() => {
     getWeatherCurrentPosition();
     setInterval(getWeatherCurrentPosition, 60000);
+
+    console.log('Posicion => ', currentLatitude, currentLongitude);
   }, [currentLatitude, currentLongitude]);
 
   return (
