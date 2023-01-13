@@ -56,21 +56,19 @@ const Main = () => {
   });
   const {currentLatitude, currentLongitude} = CurrentPosition();
 
-  const getWeatherCurrentPosition = () => {
-    if (currentLatitude && currentLongitude) {
-      const options = {
-        method: 'GET',
-        url: `https://api.openweathermap.org/data/2.5/forecast?lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
-      };
+  const getWeatherCurrentPosition = async () => {
+    try {
+      if (currentLatitude && currentLongitude) {
+        const options = {
+          method: 'GET',
+          url: `https://api.openweathermap.org/data/2.5/forecast?lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+        };
 
-      axios
-        .request(options)
-        .then(function (response) {
-          setWeather(response.data);
-        })
-        .catch(function (error) {
-          console.error('wrong => ', error);
-        });
+        const response = await axios.request(options);
+        setWeather(response.data);
+      }
+    } catch (error) {
+      console.error('wrong => ', error);
     }
   };
 
@@ -81,7 +79,7 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    getWeatherCurrentPosition();
+    getWeatherCurrentPosition().then();
     setInterval(getWeatherCurrentPosition, 60000);
 
     console.log('Posicion => ', currentLatitude, currentLongitude);
