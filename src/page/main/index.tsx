@@ -66,6 +66,10 @@ const Main = () => {
 
         const response = await axios.request(options);
         setWeather(response.data);
+        console.log(
+          'response.data ==> ',
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+        );
       }
     } catch (error) {
       console.error('wrong => ', error);
@@ -104,6 +108,14 @@ const Main = () => {
             <Text style={Styles.textHeader}>
               {weather.list[0].main.temp}º {weather.list[0].weather[0].main}
             </Text>
+          </View>
+
+          <View style={Styles.transparenceMainCard}>
+            {weather.list.slice(1, 5).map(weatherDay => (
+              <View style={[Styles.transparence]}>
+                <Text style={Styles.textDefault}>{weatherDay.main.temp}</Text>
+              </View>
+            ))}
           </View>
 
           <View style={Styles.card}>
