@@ -112,9 +112,7 @@ const Main = () => {
 
           <View style={Styles.transparenceMainCard}>
             {weather.list.slice(1, 5).map(weatherDay => (
-              <View style={[Styles.transparence]}>
-                <Text style={Styles.textDefault}>{weatherDay.main.temp}</Text>
-              </View>
+              <Text style={Styles.textDefault}>{weatherDay.main.temp}</Text>
             ))}
           </View>
 
