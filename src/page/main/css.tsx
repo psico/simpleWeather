@@ -16,6 +16,16 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 15,
   },
+  transparenceMainCardHorizontal: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderRadius: 15,
+    backgroundColor: 'rgba(52, 52, 52, 0.3)',
+    margin: 5,
+    padding: 15,
+  },
   transparence: {
     display: 'flex',
     flex: 1,
@@ -30,6 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
+
   textHeader: {
     fontFamily: 'Verdana',
     fontSize: 30,
