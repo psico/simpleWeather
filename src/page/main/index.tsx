@@ -110,7 +110,7 @@ const Main = () => {
             </Text>
           </View>
 
-          <View style={Styles.transparenceMainCard}>
+          <View style={Styles.transparenceMainCardHorizontal}>
             {weather.list.slice(1, 5).map((weatherDay, index) => (
               <Text key={'nextDays_' + index} style={Styles.textDefault}>
                 {weatherDay.main.temp}
