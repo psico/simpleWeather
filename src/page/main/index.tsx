@@ -112,12 +112,12 @@ const Main = () => {
 
           <View style={Styles.transparenceMainCardHorizontal}>
             {weather.list.slice(1, 5).map((weatherDay, index) => (
-              <Text key={'nextDays_' + index} style={Styles.textDefault}>
-                {/*<View style={{flexDirection: 'row'}}>*/}
-                <Text>{new Date(weatherDay.dt * 1000).getDate()}</Text>
-                {/*<Text>{weatherDay.main.temp}</Text>*/}
-                {/*</View>*/}
-              </Text>
+              <View key={'nextDays_' + index} style={{flexDirection: 'column'}}>
+                <Text style={Styles.textDefault}>
+                  {new Date(weatherDay.dt * 1000).getDate()}
+                </Text>
+                <Text style={Styles.textDefault}>{weatherDay.main.temp}</Text>
+              </View>
             ))}
           </View>
 
