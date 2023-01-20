@@ -113,7 +113,10 @@ const Main = () => {
           <View style={Styles.transparenceMainCardHorizontal}>
             {weather.list.slice(1, 5).map((weatherDay, index) => (
               <Text key={'nextDays_' + index} style={Styles.textDefault}>
-                {weatherDay.main.temp}
+                {/*<View style={{flexDirection: 'row'}}>*/}
+                <Text>{new Date(weatherDay.dt * 1000).getDate()}</Text>
+                {/*<Text>{weatherDay.main.temp}</Text>*/}
+                {/*</View>*/}
               </Text>
             ))}
           </View>
