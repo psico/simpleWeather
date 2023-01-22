@@ -61,14 +61,14 @@ const Main = () => {
       if (currentLatitude && currentLongitude) {
         const options = {
           method: 'GET',
-          url: `https://api.openweathermap.org/data/2.5/forecast?lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+          url: `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
         };
 
         const response = await axios.request(options);
         setWeather(response.data);
         console.log(
           'response.data ==> ',
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+          `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
         );
       }
     } catch (error) {
