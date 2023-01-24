@@ -6,7 +6,7 @@ import CurrentPosition from '../../utils/CurrentPosition';
 import {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import iconSelector from '../../components/iconSelector';
-
+import * as RNLocalize from 'react-native-localize';
 const Main = () => {
   console.info('Main component');
 
@@ -113,6 +113,12 @@ const Main = () => {
           <View style={Styles.transparenceMainCardHorizontal}>
             {weather.list.slice(1, 5).map((weatherDay, index) => (
               <View key={'nextDays_' + index} style={{flexDirection: 'column'}}>
+                <Text style={Styles.textDefault}>
+                  {new Date(weatherDay.dt * 1000).toLocaleString(
+                    window.navigator.language,
+                    {weekday: 'long'},
+                  )}
+                </Text>
                 <Text style={Styles.textDefault}>
                   {new Date(weatherDay.dt * 1000).getDate()}
                 </Text>
