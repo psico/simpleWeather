@@ -114,9 +114,13 @@ const Main = () => {
             {weather.list.slice(1, 5).map((weatherDay, index) => (
               <View key={'nextDays_' + index} style={{flexDirection: 'column'}}>
                 <Text style={Styles.textDefault}>
-                  {new Date(weatherDay.dt * 1000).toLocaleString('pt-br', {
-                    weekday: 'long',
-                  })}
+                  {
+                    new Date(weatherDay.dt * 1000)
+                      .toLocaleString('pt-br', {
+                        weekday: 'long',
+                      })
+                      .split(',')[0]
+                  }
                 </Text>
                 <Text style={Styles.textDefault}>
                   {new Date(weatherDay.dt * 1000).getDate()}
