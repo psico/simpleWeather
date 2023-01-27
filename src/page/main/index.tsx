@@ -117,7 +117,7 @@ const Main = () => {
                   {
                     new Date(weatherDay.dt * 1000)
                       .toLocaleString('pt-br', {
-                        weekday: 'long',
+                        weekday: 'short',
                       })
                       .split(',')[0]
                   }
