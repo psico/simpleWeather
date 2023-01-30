@@ -60,6 +60,10 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
+  smallLogo: {
+    width: 40,
+    height: 40,
+  },
 });
 
 export default styles;
