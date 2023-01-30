@@ -66,10 +66,10 @@ const Main = () => {
 
         const response = await axios.request(options);
         setWeather(response.data);
-        console.log(
-          'response.data ==> ',
-          `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
-        );
+        // console.log(
+        //   'response.data ==> ',
+        //   `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+        // );
       }
     } catch (error) {
       console.error('wrong => ', error);
@@ -122,6 +122,9 @@ const Main = () => {
                       .split(',')[0]
                   }
                 </Text>
+                <View style={Styles.smallLogo}>
+                  {iconSelector({weatherId: weather.list[0].weather[0].id})}
+                </View>
                 <Text style={Styles.textDefault}>
                   {new Date(weatherDay.dt * 1000).getDate()}
                 </Text>
