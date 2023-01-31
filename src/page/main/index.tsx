@@ -6,7 +6,7 @@ import CurrentPosition from '../../utils/CurrentPosition';
 import {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import iconSelector from '../../components/iconSelector';
-import * as RNLocalize from 'react-native-localize';
+
 const Main = () => {
   console.info('Main component');
 
@@ -54,6 +54,7 @@ const Main = () => {
       },
     ],
   });
+  const [nextDaysWeather, setNextDaysWeather] = useState([]);
   const {currentLatitude, currentLongitude} = CurrentPosition();
 
   const getWeatherCurrentPosition = async () => {
@@ -70,10 +71,41 @@ const Main = () => {
         //   'response.data ==> ',
         //   `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
         // );
+
+        filterNextDays();
       }
     } catch (error) {
       console.error('wrong => ', error);
     }
+  };
+
+  const filterNextDays = () => {
+    // @ts-ignore
+    const firstDate = new Date(weather.list[0].dt * 1000);
+    const firstHour = firstDate.getHours();
+    const firstMinute = firstDate.getMinutes();
+
+    return weather.list.filter((weatherDay: any) => {
+      // console.log(
+      //   'xxxxxx ==> ',
+      //   new Date(weatherDay.dt * 1000).getHours(),
+      //   firstHour,
+      // );
+      // console.log(
+      //   'bbbbb ==> ',
+      //   new Date(weatherDay.dt * 1000).getMinutes(),
+      //   firstMinute,
+      // );
+
+      return (
+        new Date(weatherDay.dt * 1000).getHours() === firstHour &&
+        new Date(weatherDay.dt * 1000).getMinutes() === firstMinute
+      );
+    });
+    // console.log('nnnnnnnn => ', x);
+
+    // @ts-ignore
+    // setNextDaysWeather(x);
   };
 
   useEffect(() => {
@@ -86,7 +118,7 @@ const Main = () => {
     getWeatherCurrentPosition().then();
     setInterval(getWeatherCurrentPosition, 60000);
 
-    console.log('Posicion => ', currentLatitude, currentLongitude);
+    // console.log('Posicion => ', currentLatitude, currentLongitude);
   }, [currentLatitude, currentLongitude]);
 
   return (
@@ -111,26 +143,30 @@ const Main = () => {
           </View>
 
           <View style={Styles.transparenceMainCardHorizontal}>
-            {weather.list.slice(1, 5).map((weatherDay, index) => (
-              <View key={'nextDays_' + index} style={{flexDirection: 'column'}}>
-                <Text style={Styles.textDefault}>
-                  {
-                    new Date(weatherDay.dt * 1000)
-                      .toLocaleString('pt-br', {
-                        weekday: 'short',
-                      })
-                      .split(',')[0]
-                  }
-                </Text>
-                <View style={Styles.smallLogo}>
-                  {iconSelector({weatherId: weatherDay.weather[0].id})}
+            {filterNextDays()
+              .slice(1, 5)
+              .map((weatherDay, index) => (
+                <View
+                  key={'nextDays_' + index}
+                  style={{flexDirection: 'column'}}>
+                  <Text style={Styles.textDefault}>
+                    {
+                      new Date(weatherDay.dt * 1000)
+                        .toLocaleString('pt-br', {
+                          weekday: 'short',
+                        })
+                        .split(',')[0]
+                    }
+                  </Text>
+                  <View style={Styles.smallLogo}>
+                    {iconSelector({weatherId: weatherDay.weather[0].id})}
+                  </View>
+                  <Text style={Styles.textDefault}>
+                    {new Date(weatherDay.dt * 1000).getDate()}
+                  </Text>
+                  <Text style={Styles.textDefault}>{weatherDay.main.temp}</Text>
                 </View>
-                <Text style={Styles.textDefault}>
-                  {new Date(weatherDay.dt * 1000).getDate()}
-                </Text>
-                <Text style={Styles.textDefault}>{weatherDay.main.temp}</Text>
-              </View>
-            ))}
+              ))}
           </View>
 
           <View style={Styles.card}>
