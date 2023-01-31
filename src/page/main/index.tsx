@@ -143,7 +143,9 @@ const Main = () => {
                   <Text style={Styles.textDefault}>
                     {new Date(weatherDay.dt * 1000).getDate()}
                   </Text>
-                  <Text style={Styles.textDefault}>{weatherDay.main.temp}</Text>
+                  <Text style={Styles.textDefault}>
+                    {weatherDay.main.temp}º
+                  </Text>
                 </View>
               ))}
           </View>
