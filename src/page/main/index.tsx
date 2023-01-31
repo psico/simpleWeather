@@ -82,12 +82,11 @@ const Main = () => {
     const firstHour = firstDate.getHours();
     const firstMinute = firstDate.getMinutes();
 
-    return weather.list.filter((weatherDay: any) => {
-      return (
+    return weather.list.filter(
+      (weatherDay: any) =>
         new Date(weatherDay.dt * 1000).getHours() === firstHour &&
-        new Date(weatherDay.dt * 1000).getMinutes() === firstMinute
-      );
-    });
+        new Date(weatherDay.dt * 1000).getMinutes() === firstMinute,
+    );
   };
 
   useEffect(() => {
