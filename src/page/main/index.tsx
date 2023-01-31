@@ -54,7 +54,6 @@ const Main = () => {
       },
     ],
   });
-  const [nextDaysWeather, setNextDaysWeather] = useState([]);
   const {currentLatitude, currentLongitude} = CurrentPosition();
 
   const getWeatherCurrentPosition = async () => {
@@ -71,8 +70,6 @@ const Main = () => {
         //   'response.data ==> ',
         //   `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
         // );
-
-        filterNextDays();
       }
     } catch (error) {
       console.error('wrong => ', error);
@@ -86,26 +83,11 @@ const Main = () => {
     const firstMinute = firstDate.getMinutes();
 
     return weather.list.filter((weatherDay: any) => {
-      // console.log(
-      //   'xxxxxx ==> ',
-      //   new Date(weatherDay.dt * 1000).getHours(),
-      //   firstHour,
-      // );
-      // console.log(
-      //   'bbbbb ==> ',
-      //   new Date(weatherDay.dt * 1000).getMinutes(),
-      //   firstMinute,
-      // );
-
       return (
         new Date(weatherDay.dt * 1000).getHours() === firstHour &&
         new Date(weatherDay.dt * 1000).getMinutes() === firstMinute
       );
     });
-    // console.log('nnnnnnnn => ', x);
-
-    // @ts-ignore
-    // setNextDaysWeather(x);
   };
 
   useEffect(() => {
@@ -117,8 +99,6 @@ const Main = () => {
   useEffect(() => {
     getWeatherCurrentPosition().then();
     setInterval(getWeatherCurrentPosition, 60000);
-
-    // console.log('Posicion => ', currentLatitude, currentLongitude);
   }, [currentLatitude, currentLongitude]);
 
   return (
