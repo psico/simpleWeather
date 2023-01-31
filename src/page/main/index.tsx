@@ -140,9 +140,9 @@ const Main = () => {
                   <View style={Styles.smallLogo}>
                     {iconSelector({weatherId: weatherDay.weather[0].id})}
                   </View>
-                  <Text style={Styles.textDefault}>
-                    {new Date(weatherDay.dt * 1000).getDate()}
-                  </Text>
+                  {/*<Text style={Styles.textDefault}>*/}
+                  {/*  {new Date(weatherDay.dt * 1000).getDate()}*/}
+                  {/*</Text>*/}
                   <Text style={Styles.textDefault}>
                     {weatherDay.main.temp}º
                   </Text>
