@@ -161,7 +161,9 @@ const Main = () => {
               </Text>
             </View>
             <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>Wind Speed</Text>
+              <Text style={Styles.textDefault}>
+                <Icon name="wind" size={20} color="#FFF" /> Wind Speed
+              </Text>
               <Text style={Styles.textDefault}>
                 {weather.list[0].wind.speed}
               </Text>
