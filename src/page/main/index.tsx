@@ -6,6 +6,7 @@ import CurrentPosition from '../../utils/CurrentPosition';
 import {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import iconSelector from '../../components/iconSelector';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Main = () => {
   console.info('Main component');
@@ -152,7 +153,10 @@ const Main = () => {
 
           <View style={Styles.card}>
             <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>Feels Like</Text>
+              <Text style={Styles.textDefault}>
+                <Icon name="thermometer-3" size={20} color="#FFF" />
+                Feels Like
+              </Text>
               <Text style={Styles.textDefault}>
                 {weather.list[0].main.feels_like}
               </Text>
