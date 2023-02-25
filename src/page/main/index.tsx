@@ -172,13 +172,19 @@ const Main = () => {
 
           <View style={Styles.card}>
             <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>Minimum</Text>
+              <Text style={Styles.textDefault}>
+                <Icon name="thermometer-chevron-down" size={20} color="#FFF" />{' '}
+                Minimum
+              </Text>
               <Text style={Styles.textDefault}>
                 {weather.list[0].main.temp_min}
               </Text>
             </View>
             <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>Maximum</Text>
+              <Text style={Styles.textDefault}>
+                <Icon name="thermometer-chevron-up" size={20} color="#FFF" />{' '}
+                Maximum
+              </Text>
               <Text style={Styles.textDefault}>
                 {weather.list[0].main.temp_max}
               </Text>
