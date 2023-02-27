@@ -7,6 +7,7 @@ import {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import iconSelector from '../../components/iconSelector';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import IconFeather from 'react-native-vector-icons/Feather';
 
 const Main = () => {
   console.info('Main component');
@@ -162,7 +163,7 @@ const Main = () => {
             </View>
             <View style={[Styles.transparence]}>
               <Text style={Styles.textDefault}>
-                <Icon name="wind" size={20} color="#FFF" /> Wind Speed
+                <IconFeather name="wind" size={20} color="#FFF" /> Wind Speed
               </Text>
               <Text style={Styles.textDefault}>
                 {weather.list[0].wind.speed}
