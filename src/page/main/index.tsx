@@ -6,8 +6,9 @@ import CurrentPosition from '../../utils/CurrentPosition';
 import {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import iconSelector from '../../components/iconSelector';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import IconFeather from 'react-native-vector-icons/Feather';
+import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Main = () => {
   console.info('Main component');
@@ -155,7 +156,8 @@ const Main = () => {
           <View style={Styles.card}>
             <View style={[Styles.transparence]}>
               <Text style={Styles.textDefault}>
-                <Icon name="thermometer-3" size={20} color="#FFF" /> Feels Like
+                <IconFontAwesome name="thermometer-3" size={20} color="#FFF" />{' '}
+                Feels Like
               </Text>
               <Text style={Styles.textDefault}>
                 {weather.list[0].main.feels_like}
@@ -174,7 +176,11 @@ const Main = () => {
           <View style={Styles.card}>
             <View style={[Styles.transparence]}>
               <Text style={Styles.textDefault}>
-                <Icon name="thermometer-chevron-down" size={20} color="#FFF" />{' '}
+                <IconMaterialCommunityIcons
+                  name="thermometer-chevron-down"
+                  size={20}
+                  color="#FFF"
+                />{' '}
                 Minimum
               </Text>
               <Text style={Styles.textDefault}>
@@ -183,7 +189,11 @@ const Main = () => {
             </View>
             <View style={[Styles.transparence]}>
               <Text style={Styles.textDefault}>
-                <Icon name="thermometer-chevron-up" size={20} color="#FFF" />{' '}
+                <IconMaterialCommunityIcons
+                  name="thermometer-chevron-up"
+                  size={20}
+                  color="#FFF"
+                />{' '}
                 Maximum
               </Text>
               <Text style={Styles.textDefault}>
