@@ -205,7 +205,14 @@ const Main = () => {
 
           <View style={Styles.card}>
             <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>Pressure</Text>
+              <Text style={Styles.textDefault}>
+                <IconMaterialCommunityIcons
+                  name="speedometer"
+                  size={20}
+                  color="#FFF"
+                />{' '}
+                Pressure
+              </Text>
               <Text style={Styles.textDefault}>
                 {weather.list[0].main.pressure}
               </Text>
