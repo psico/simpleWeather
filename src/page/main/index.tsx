@@ -9,6 +9,7 @@ import iconSelector from '../../components/iconSelector';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import IconFeather from 'react-native-vector-icons/Feather';
 import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import IconEntypo from 'react-native-vector-icons/Entypo';
 
 const Main = () => {
   console.info('Main component');
@@ -210,7 +211,9 @@ const Main = () => {
               </Text>
             </View>
             <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>Humidity</Text>
+              <Text style={Styles.textDefault}>
+                <IconEntypo name="drop" size={20} color="#FFF" /> Humidity
+              </Text>
               <Text style={Styles.textDefault}>
                 {weather.list[0].main.humidity}
               </Text>
