@@ -16,6 +16,8 @@ const Main = () => {
 
   const [unit, setUnit] = useState('');
   const [currentDate, setCurrentDate] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const {currentLatitude, currentLongitude} = CurrentPosition();
   const [weather, setWeather] = useState({
     cod: '',
     city: {
@@ -58,7 +60,6 @@ const Main = () => {
       },
     ],
   });
-  const {currentLatitude, currentLongitude} = CurrentPosition();
 
   const getWeatherCurrentPosition = async () => {
     try {
