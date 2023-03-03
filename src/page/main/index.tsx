@@ -16,7 +16,7 @@ const Main = () => {
 
   const [unit, setUnit] = useState('');
   const [currentDate, setCurrentDate] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const {currentLatitude, currentLongitude} = CurrentPosition();
   const [weather, setWeather] = useState({
     cod: '',
@@ -75,6 +75,7 @@ const Main = () => {
         //   'response.data ==> ',
         //   `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
         // );
+        setLoading(false);
       }
     } catch (error) {
       console.error('wrong => ', error);
@@ -112,122 +113,130 @@ const Main = () => {
       start={{x: 0.0, y: 0.15}}
       end={{x: 0.95, y: 0.75}}>
       <SafeAreaView>
-        <ScrollView>
-          <View style={Styles.transparenceMainCard}>
-            <Text style={Styles.textHeader}>{weather.city.name}</Text>
-            <Text style={Styles.textSmall}>{currentDate}</Text>
+        {!loading ? (
+          <ScrollView>
+            <View style={Styles.transparenceMainCard}>
+              <Text style={Styles.textHeader}>{weather.city.name}</Text>
+              <Text style={Styles.textSmall}>{currentDate}</Text>
 
-            <View style={Styles.logo}>
-              {iconSelector({weatherId: weather.list[0].weather[0].id})}
+              <View style={Styles.logo}>
+                {iconSelector({weatherId: weather.list[0].weather[0].id})}
+              </View>
+
+              <Text style={Styles.textHeader}>
+                {weather.list[0].main.temp}º {weather.list[0].weather[0].main}
+              </Text>
             </View>
 
-            <Text style={Styles.textHeader}>
-              {weather.list[0].main.temp}º {weather.list[0].weather[0].main}
-            </Text>
-          </View>
-
-          <View style={Styles.transparenceMainCardHorizontal}>
-            {filterNextDays()
-              .slice(1, 5)
-              .map((weatherDay, index) => (
-                <View
-                  key={'nextDays_' + index}
-                  style={{flexDirection: 'column'}}>
-                  <Text style={Styles.textDefault}>
-                    {
-                      new Date(weatherDay.dt * 1000)
-                        .toLocaleString('pt-br', {
-                          weekday: 'short',
-                        })
-                        .split(',')[0]
-                    }
-                  </Text>
-                  <View style={Styles.smallLogo}>
-                    {iconSelector({weatherId: weatherDay.weather[0].id})}
+            <View style={Styles.transparenceMainCardHorizontal}>
+              {filterNextDays()
+                .slice(1, 5)
+                .map((weatherDay, index) => (
+                  <View
+                    key={'nextDays_' + index}
+                    style={{flexDirection: 'column'}}>
+                    <Text style={Styles.textDefault}>
+                      {
+                        new Date(weatherDay.dt * 1000)
+                          .toLocaleString('pt-br', {
+                            weekday: 'short',
+                          })
+                          .split(',')[0]
+                      }
+                    </Text>
+                    <View style={Styles.smallLogo}>
+                      {iconSelector({weatherId: weatherDay.weather[0].id})}
+                    </View>
+                    {/*<Text style={Styles.textDefault}>*/}
+                    {/*  {new Date(weatherDay.dt * 1000).getDate()}*/}
+                    {/*</Text>*/}
+                    <Text style={Styles.textDefault}>
+                      {weatherDay.main.temp}º
+                    </Text>
                   </View>
-                  {/*<Text style={Styles.textDefault}>*/}
-                  {/*  {new Date(weatherDay.dt * 1000).getDate()}*/}
-                  {/*</Text>*/}
-                  <Text style={Styles.textDefault}>
-                    {weatherDay.main.temp}º
-                  </Text>
-                </View>
-              ))}
-          </View>
+                ))}
+            </View>
 
-          <View style={Styles.card}>
-            <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>
-                <IconFontAwesome name="thermometer-3" size={20} color="#FFF" />{' '}
-                Feels Like
-              </Text>
-              <Text style={Styles.textDefault}>
-                {weather.list[0].main.feels_like}
-              </Text>
+            <View style={Styles.card}>
+              <View style={[Styles.transparence]}>
+                <Text style={Styles.textDefault}>
+                  <IconFontAwesome
+                    name="thermometer-3"
+                    size={20}
+                    color="#FFF"
+                  />{' '}
+                  Feels Like
+                </Text>
+                <Text style={Styles.textDefault}>
+                  {weather.list[0].main.feels_like}
+                </Text>
+              </View>
+              <View style={[Styles.transparence]}>
+                <Text style={Styles.textDefault}>
+                  <IconFeather name="wind" size={20} color="#FFF" /> Wind Speed
+                </Text>
+                <Text style={Styles.textDefault}>
+                  {weather.list[0].wind.speed}
+                </Text>
+              </View>
             </View>
-            <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>
-                <IconFeather name="wind" size={20} color="#FFF" /> Wind Speed
-              </Text>
-              <Text style={Styles.textDefault}>
-                {weather.list[0].wind.speed}
-              </Text>
-            </View>
-          </View>
 
-          <View style={Styles.card}>
-            <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>
-                <IconMaterialCommunityIcons
-                  name="thermometer-chevron-down"
-                  size={20}
-                  color="#FFF"
-                />{' '}
-                Minimum
-              </Text>
-              <Text style={Styles.textDefault}>
-                {weather.list[0].main.temp_min}
-              </Text>
+            <View style={Styles.card}>
+              <View style={[Styles.transparence]}>
+                <Text style={Styles.textDefault}>
+                  <IconMaterialCommunityIcons
+                    name="thermometer-chevron-down"
+                    size={20}
+                    color="#FFF"
+                  />{' '}
+                  Minimum
+                </Text>
+                <Text style={Styles.textDefault}>
+                  {weather.list[0].main.temp_min}
+                </Text>
+              </View>
+              <View style={[Styles.transparence]}>
+                <Text style={Styles.textDefault}>
+                  <IconMaterialCommunityIcons
+                    name="thermometer-chevron-up"
+                    size={20}
+                    color="#FFF"
+                  />{' '}
+                  Maximum
+                </Text>
+                <Text style={Styles.textDefault}>
+                  {weather.list[0].main.temp_max}
+                </Text>
+              </View>
             </View>
-            <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>
-                <IconMaterialCommunityIcons
-                  name="thermometer-chevron-up"
-                  size={20}
-                  color="#FFF"
-                />{' '}
-                Maximum
-              </Text>
-              <Text style={Styles.textDefault}>
-                {weather.list[0].main.temp_max}
-              </Text>
-            </View>
-          </View>
 
-          <View style={Styles.card}>
-            <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>
-                <IconMaterialCommunityIcons
-                  name="speedometer"
-                  size={20}
-                  color="#FFF"
-                />{' '}
-                Pressure
-              </Text>
-              <Text style={Styles.textDefault}>
-                {weather.list[0].main.pressure}
-              </Text>
+            <View style={Styles.card}>
+              <View style={[Styles.transparence]}>
+                <Text style={Styles.textDefault}>
+                  <IconMaterialCommunityIcons
+                    name="speedometer"
+                    size={20}
+                    color="#FFF"
+                  />{' '}
+                  Pressure
+                </Text>
+                <Text style={Styles.textDefault}>
+                  {weather.list[0].main.pressure}
+                </Text>
+              </View>
+              <View style={[Styles.transparence]}>
+                <Text style={Styles.textDefault}>
+                  <IconEntypo name="drop" size={20} color="#FFF" /> Humidity
+                </Text>
+                <Text style={Styles.textDefault}>
+                  {weather.list[0].main.humidity}
+                </Text>
+              </View>
             </View>
-            <View style={[Styles.transparence]}>
-              <Text style={Styles.textDefault}>
-                <IconEntypo name="drop" size={20} color="#FFF" /> Humidity
-              </Text>
-              <Text style={Styles.textDefault}>
-                {weather.list[0].main.humidity}
-              </Text>
-            </View>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        ) : (
+          <Text>Loading</Text>
+        )}
       </SafeAreaView>
     </LinearGradient>
   );
