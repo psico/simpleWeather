@@ -26,6 +26,14 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 15,
   },
+  transparenceMainCardCenter: {
+    alignItems: 'center',
+    borderRadius: 15,
+    backgroundColor: 'rgba(52, 52, 52, 0.3)',
+    margin: 50,
+    marginTop: '80%',
+    padding: 15,
+  },
   transparence: {
     display: 'flex',
     flex: 1,

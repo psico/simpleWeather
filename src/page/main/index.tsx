@@ -1,4 +1,10 @@
-import React, {SafeAreaView, ScrollView, Text, View} from 'react-native';
+import React, {
+  ActivityIndicator,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import Styles from './css';
 import axios from 'axios';
 import {REACT_APP_OPEN_WEATHER_API_KEY} from '@env';
@@ -235,8 +241,10 @@ const Main = () => {
             </View>
           </ScrollView>
         ) : (
-          <View style={Styles.transparenceMainCardHorizontal}>
-            <Text style={[Styles.textHeader]}>Loading</Text>
+          <View style={Styles.transparenceMainCardCenter}>
+            <Text style={[Styles.textHeader]}>
+              <ActivityIndicator size="large" color="#ffffff" /> Loading
+            </Text>
           </View>
         )}
       </SafeAreaView>
