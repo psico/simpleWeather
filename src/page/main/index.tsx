@@ -235,7 +235,11 @@ const Main = () => {
             </View>
           </ScrollView>
         ) : (
-          <Text>Loading</Text>
+          <View style={Styles.card}>
+            <View style={[Styles.transparence]}>
+              <Text style={[Styles.textHeader]}>Loading</Text>
+            </View>
+          </View>
         )}
       </SafeAreaView>
     </LinearGradient>
