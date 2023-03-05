@@ -235,10 +235,8 @@ const Main = () => {
             </View>
           </ScrollView>
         ) : (
-          <View style={Styles.card}>
-            <View style={[Styles.transparence]}>
-              <Text style={[Styles.textHeader]}>Loading</Text>
-            </View>
+          <View style={Styles.transparenceMainCardHorizontal}>
+            <Text style={[Styles.textHeader]}>Loading</Text>
           </View>
         )}
       </SafeAreaView>
