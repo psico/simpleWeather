@@ -34,6 +34,9 @@ const Main = () => {
       hello: 'Olá!',
     },
   });
+  i18n.defaultLocale = 'en';
+  i18n.locale = 'pt-BR';
+
   const [weather, setWeather] = useState({
     cod: '',
     city: {
@@ -112,7 +115,6 @@ const Main = () => {
   };
 
   useEffect(() => {
-    i18n.defaultLocale = 'pt-BR';
     setUnit('metric');
     // @ts-ignore
     setCurrentDate(new Date().toGMTString());
