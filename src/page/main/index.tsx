@@ -16,6 +16,8 @@ import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import IconFeather from 'react-native-vector-icons/Feather';
 import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconEntypo from 'react-native-vector-icons/Entypo';
+import {I18n} from 'i18n-js';
+// import translations from './translations.json';
 
 const Main = () => {
   console.info('Main component');
@@ -24,6 +26,14 @@ const Main = () => {
   const [currentDate, setCurrentDate] = useState(null);
   const [loading, setLoading] = useState(true);
   const {currentLatitude, currentLongitude} = CurrentPosition();
+  const i18n = new I18n({
+    en: {
+      hello: 'Hi!',
+    },
+    'pt-BR': {
+      hello: 'Olá!',
+    },
+  });
   const [weather, setWeather] = useState({
     cod: '',
     city: {
@@ -102,6 +112,7 @@ const Main = () => {
   };
 
   useEffect(() => {
+    i18n.defaultLocale = 'pt-BR';
     setUnit('metric');
     // @ts-ignore
     setCurrentDate(new Date().toGMTString());
@@ -122,6 +133,7 @@ const Main = () => {
         {!loading ? (
           <ScrollView>
             <View style={Styles.transparenceMainCard}>
+              <Text>{i18n.t('hello')}</Text>
               <Text style={Styles.textHeader}>{weather.city.name}</Text>
               <Text style={Styles.textSmall}>{currentDate}</Text>
 
@@ -142,13 +154,12 @@ const Main = () => {
                     key={'nextDays_' + index}
                     style={{flexDirection: 'column'}}>
                     <Text style={Styles.textDefault}>
-                      {
+                      {weatherDay.dt &&
                         new Date(weatherDay.dt * 1000)
                           .toLocaleString('pt-br', {
                             weekday: 'short',
                           })
-                          .split(',')[0]
-                      }
+                          .split(',')[0]}
                     </Text>
                     <View style={Styles.smallLogo}>
                       {iconSelector({weatherId: weatherDay.weather[0].id})}
