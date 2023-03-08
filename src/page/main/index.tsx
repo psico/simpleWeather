@@ -17,7 +17,7 @@ import IconFeather from 'react-native-vector-icons/Feather';
 import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconEntypo from 'react-native-vector-icons/Entypo';
 import {I18n} from 'i18n-js';
-// import translations from './translations.json';
+import translations from '../../translations.json';
 
 const Main = () => {
   console.info('Main component');
@@ -26,14 +26,7 @@ const Main = () => {
   const [currentDate, setCurrentDate] = useState(null);
   const [loading, setLoading] = useState(true);
   const {currentLatitude, currentLongitude} = CurrentPosition();
-  const i18n = new I18n({
-    en: {
-      hello: 'Hi!',
-    },
-    'pt-BR': {
-      hello: 'Olá!',
-    },
-  });
+  const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.locale = 'pt-BR';
 
