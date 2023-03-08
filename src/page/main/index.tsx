@@ -18,6 +18,7 @@ import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommun
 import IconEntypo from 'react-native-vector-icons/Entypo';
 import {I18n} from 'i18n-js';
 import translations from '../../translations.json';
+import {getLocales} from 'react-native-localize';
 
 const Main = () => {
   console.info('Main component');
@@ -28,7 +29,7 @@ const Main = () => {
   const {currentLatitude, currentLongitude} = CurrentPosition();
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
-  i18n.locale = 'pt-BR';
+  i18n.locale = getLocales()[0].languageCode;
 
   const [weather, setWeather] = useState({
     cod: '',
