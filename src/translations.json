@@ -1,9 +1,23 @@
 {
   "en": {
-    "hello": "Hi!"
+    "hello": "Hi!",
+    "loading": "Loading",
+    "feels_like": "Feels Like",
+    "wind_speed": "Wind Speed",
+    "minimum": "Minimum",
+    "maximum": "Maximum",
+    "pressure": "Pressure",
+    "humidity": "Humidity"
   },
   "pt": {
-    "hello": "Olá!"
+    "hello": "Olá!",
+    "loading": "Carregando",
+    "feels_like": "Sens. térmica",
+    "wind_speed": "Vel. do vento",
+    "minimum": "Mínima",
+    "maximum": "Máximum",
+    "pressure": "Pressão",
+    "humidity": "Humidade"
   }
 }
 

@@ -129,7 +129,6 @@ const Main = () => {
         {!loading ? (
           <ScrollView>
             <View style={Styles.transparenceMainCard}>
-              <Text>{i18n.t('hello')}</Text>
               <Text style={Styles.textHeader}>{weather.city.name}</Text>
               <Text style={Styles.textSmall}>{currentDate}</Text>
 
@@ -178,7 +177,7 @@ const Main = () => {
                     size={20}
                     color="#FFF"
                   />{' '}
-                  Feels Like
+                  {i18n.t('feels_like')}
                 </Text>
                 <Text style={Styles.textDefault}>
                   {weather.list[0].main.feels_like}
@@ -186,7 +185,8 @@ const Main = () => {
               </View>
               <View style={[Styles.transparence]}>
                 <Text style={Styles.textDefault}>
-                  <IconFeather name="wind" size={20} color="#FFF" /> Wind Speed
+                  <IconFeather name="wind" size={20} color="#FFF" />{' '}
+                  {i18n.t('wind_speed')}
                 </Text>
                 <Text style={Styles.textDefault}>
                   {weather.list[0].wind.speed}
@@ -202,7 +202,7 @@ const Main = () => {
                     size={20}
                     color="#FFF"
                   />{' '}
-                  Minimum
+                  {i18n.t('minimum')}
                 </Text>
                 <Text style={Styles.textDefault}>
                   {weather.list[0].main.temp_min}
@@ -215,7 +215,7 @@ const Main = () => {
                     size={20}
                     color="#FFF"
                   />{' '}
-                  Maximum
+                  {i18n.t('maximum')}
                 </Text>
                 <Text style={Styles.textDefault}>
                   {weather.list[0].main.temp_max}
@@ -231,7 +231,7 @@ const Main = () => {
                     size={20}
                     color="#FFF"
                   />{' '}
-                  Pressure
+                  {i18n.t('pressure')}
                 </Text>
                 <Text style={Styles.textDefault}>
                   {weather.list[0].main.pressure}
@@ -239,7 +239,8 @@ const Main = () => {
               </View>
               <View style={[Styles.transparence]}>
                 <Text style={Styles.textDefault}>
-                  <IconEntypo name="drop" size={20} color="#FFF" /> Humidity
+                  <IconEntypo name="drop" size={20} color="#FFF" />{' '}
+                  {i18n.t('humidity')}
                 </Text>
                 <Text style={Styles.textDefault}>
                   {weather.list[0].main.humidity}
@@ -250,7 +251,8 @@ const Main = () => {
         ) : (
           <View style={Styles.transparenceMainCardCenter}>
             <Text style={[Styles.textHeader]}>
-              <ActivityIndicator size="large" color="#ffffff" /> Loading
+              <ActivityIndicator size="large" color="#ffffff" />{' '}
+              {i18n.t('loading')}
             </Text>
           </View>
         )}
