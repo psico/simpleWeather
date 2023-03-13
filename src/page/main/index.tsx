@@ -151,7 +151,7 @@ const Main = () => {
                     <Text style={Styles.textDefault}>
                       {weatherDay.dt &&
                         new Date(weatherDay.dt * 1000)
-                          .toLocaleString('pt-br', {
+                          .toLocaleString(i18n.locale, {
                             weekday: 'short',
                           })
                           .split(',')[0]}
