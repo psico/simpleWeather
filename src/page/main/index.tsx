@@ -111,7 +111,7 @@ const Main = () => {
   useEffect(() => {
     setUnit('metric');
     // @ts-ignore
-    setCurrentDate(new Date().toGMTString());
+    setCurrentDate(new Date().toLocaleString(i18n.locale));
   }, []);
 
   useEffect(() => {
