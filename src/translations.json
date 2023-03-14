@@ -7,7 +7,25 @@
     "minimum": "Minimum",
     "maximum": "Maximum",
     "pressure": "Pressure",
-    "humidity": "Humidity"
+    "humidity": "Humidity",
+
+    "Thunderstorm": "Thunderstorm",
+    "Drizzle": "Drizzle",
+    "Rain": "Rain",
+    "Snow": "Snow",
+    "snow": "Snow",
+    "Atmosphere": "Atmosphere",
+    "Mist": "Mist",
+    "Smoke": "Smoke",
+    "Haze": "Haze",
+    "Dust": "Dust",
+    "Fog": "Fog",
+    "Sand": "Sand",
+    "Ash": "Ash",
+    "Squall": "Squall",
+    "Tornado": "Tornado",
+    "Clear": "Clear",
+    "Clouds": "Clouds"
   },
   "pt": {
     "hello": "Olá!",
@@ -17,7 +35,25 @@
     "minimum": "Mínima",
     "maximum": "Máximum",
     "pressure": "Pressão",
-    "humidity": "Humidade"
+    "humidity": "Humidade",
+
+    "Thunderstorm": "Trovoada",
+    "Drizzle": "Chuvisco",
+    "Rain": "Chuva",
+    "Snow": "Neve",
+    "snow": "Snow",
+    "Atmosphere": "Atmosfera",
+    "Mist": "Névoa",
+    "Smoke": "Fumaça",
+    "Haze": "Neblina",
+    "Dust": "Poeira",
+    "Fog": "Névoa",
+    "Sand": "Areia",
+    "Ash": "Cinzas",
+    "Squall": "Tempestade",
+    "Tornado": "Tornado",
+    "Clear": "Claro",
+    "Clouds": "Nuvens"
   }
 }
 
