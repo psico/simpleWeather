@@ -137,7 +137,8 @@ const Main = () => {
               </View>
 
               <Text style={Styles.textHeader}>
-                {weather.list[0].main.temp}º {weather.list[0].weather[0].main}
+                {weather.list[0].main.temp}º{' '}
+                {i18n.t(weather.list[0].weather[0].main)}
               </Text>
             </View>
 
