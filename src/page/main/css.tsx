@@ -1,9 +1,14 @@
 import {StyleSheet} from 'react-native';
 
+const borderDefault = 10;
+const marginDefault = 3;
 const styles = StyleSheet.create({
   body: {
     display: 'flex',
     flex: 1,
+  },
+  banner: {
+    marginLeft: '10%',
   },
   transparenceMainCard: {
     display: 'flex',
@@ -11,9 +16,9 @@ const styles = StyleSheet.create({
     // flexDirection: 'column',
     // justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 15,
+    borderRadius: borderDefault,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
-    margin: 5,
+    margin: marginDefault,
     padding: 15,
   },
   transparenceMainCardHorizontal: {
@@ -21,14 +26,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 15,
+    borderRadius: borderDefault,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
-    margin: 5,
+    margin: marginDefault,
     padding: 15,
   },
   transparenceMainCardCenter: {
     alignItems: 'center',
-    borderRadius: 15,
+    borderRadius: borderDefault,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
     margin: 50,
     marginTop: '80%',
@@ -37,9 +42,9 @@ const styles = StyleSheet.create({
   transparence: {
     display: 'flex',
     flex: 1,
-    borderRadius: 15,
+    borderRadius: borderDefault,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
-    margin: 5,
+    margin: marginDefault,
     padding: 15,
   },
   card: {
@@ -61,7 +66,7 @@ const styles = StyleSheet.create({
   },
   textDefault: {
     fontFamily: 'Verdana',
-    fontSize: 20,
+    fontSize: 18,
     color: '#FFFFFF',
   },
   logo: {
