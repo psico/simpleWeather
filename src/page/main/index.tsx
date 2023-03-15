@@ -9,7 +9,7 @@ import Styles from './css';
 import axios from 'axios';
 import {REACT_APP_OPEN_WEATHER_API_KEY} from '@env';
 import CurrentPosition from '../../utils/CurrentPosition';
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import iconSelector from '../../components/iconSelector';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -19,6 +19,7 @@ import IconEntypo from 'react-native-vector-icons/Entypo';
 import {I18n} from 'i18n-js';
 import translations from '../../translations.json';
 import {getLocales} from 'react-native-localize';
+import {BannerAd, BannerAdSize, TestIds} from '@react-native-admob/admob';
 
 const Main = () => {
   console.info('Main component');
@@ -27,6 +28,7 @@ const Main = () => {
   const [currentDate, setCurrentDate] = useState(null);
   const [loading, setLoading] = useState(true);
   const {currentLatitude, currentLongitude} = CurrentPosition();
+  const bannerRef = useRef(null);
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.locale = getLocales()[0].languageCode;
@@ -257,6 +259,12 @@ const Main = () => {
             </Text>
           </View>
         )}
+        <BannerAd
+          style={Styles.banner}
+          size={BannerAdSize.BANNER}
+          unitId={TestIds.BANNER}
+          onAdFailedToLoad={error => console.error(error)}
+        />
       </SafeAreaView>
     </LinearGradient>
   );
