@@ -256,7 +256,7 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
-    implementation 'com.google.android.gms:play-services-ads:21.4.0'
+    implementation 'com.google.android.gms:play-services-ads:21.5.0'
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
