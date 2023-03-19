@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   banner: {
-    marginLeft: '10%',
+    // marginLeft: '10%',
   },
   transparenceMainCard: {
     display: 'flex',
