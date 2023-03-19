@@ -260,18 +260,18 @@ const Main = () => {
             </Text>
           </View>
         )}
+        {/*<BannerAd*/}
+        {/*  style={Styles.banner}*/}
+        {/*  size={BannerAdSize.ADAPTIVE_BANNER}*/}
+        {/*  unitId={TestIds.BANNER}*/}
+        {/*  onAdFailedToLoad={error => console.error(error)}*/}
+        {/*/>*/}
         <BannerAd
           style={Styles.banner}
           size={BannerAdSize.ADAPTIVE_BANNER}
           unitId={TestIds.BANNER}
           onAdFailedToLoad={error => console.error(error)}
         />
-        {/*<BannerAd*/}
-        {/*  style={Styles.banner}*/}
-        {/*  size={BannerAdSize.ADAPTIVE_BANNER}*/}
-        {/*  unitId={bannerAdUnitId}*/}
-        {/*  onAdFailedToLoad={error => console.error(error)}*/}
-        {/*/>*/}
       </SafeAreaView>
     </LinearGradient>
   );
