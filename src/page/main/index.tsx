@@ -269,7 +269,7 @@ const Main = () => {
         <BannerAd
           style={Styles.banner}
           size={BannerAdSize.ADAPTIVE_BANNER}
-          unitId={TestIds.BANNER}
+          unitId={bannerAdUnitId}
           onAdFailedToLoad={error => console.error(error)}
         />
       </SafeAreaView>
