@@ -19,7 +19,7 @@ import IconEntypo from 'react-native-vector-icons/Entypo';
 import {I18n} from 'i18n-js';
 import translations from '../../translations.json';
 import {getLocales} from 'react-native-localize';
-import {BannerAd, BannerAdSize, TestIds} from '@react-native-admob/admob';
+import {BannerAd, BannerAdSize} from '@react-native-admob/admob';
 
 const Main = () => {
   console.info('Main component');
@@ -260,12 +260,6 @@ const Main = () => {
             </Text>
           </View>
         )}
-        {/*<BannerAd*/}
-        {/*  style={Styles.banner}*/}
-        {/*  size={BannerAdSize.ADAPTIVE_BANNER}*/}
-        {/*  unitId={TestIds.BANNER}*/}
-        {/*  onAdFailedToLoad={error => console.error(error)}*/}
-        {/*/>*/}
         <BannerAd
           style={Styles.banner}
           size={BannerAdSize.ADAPTIVE_BANNER}
