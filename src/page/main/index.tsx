@@ -115,7 +115,7 @@ const Main = () => {
     setUnit('metric');
     // @ts-ignore
     setCurrentDate(new Date().toLocaleString(i18n.locale));
-  }, []);
+  }, [i18n]);
 
   useEffect(() => {
     getWeatherCurrentPosition().then();
