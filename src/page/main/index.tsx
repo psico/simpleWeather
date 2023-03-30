@@ -79,6 +79,7 @@ const Main = () => {
 
   const getWeatherCurrentPosition = async () => {
     try {
+      console.info('Requesting weather...');
       if (currentLatitude && currentLongitude) {
         const options = {
           method: 'GET',
@@ -87,10 +88,6 @@ const Main = () => {
 
         const response = await axios.request(options);
         setWeather(response.data);
-        // console.log(
-        //   'response.data ==> ',
-        //   `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
-        // );
         setLoading(false);
       }
     } catch (error) {
