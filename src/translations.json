@@ -25,7 +25,9 @@
     "Squall": "Squall",
     "Tornado": "Tornado",
     "Clear": "Clear",
-    "Clouds": "Clouds"
+    "Clouds": "Clouds",
+
+    "check_permission": "If it is taking too long to load, check the geolocation permission"
   },
   "pt": {
     "hello": "Olá!",
@@ -53,7 +55,9 @@
     "Squall": "Tempestade",
     "Tornado": "Tornado",
     "Clear": "Claro",
-    "Clouds": "Nuvens"
+    "Clouds": "Nuvens",
+
+    "check_permission": "Caso esteja demorando a carregar verifique a permissão locação geografica"
   }
 }
 
