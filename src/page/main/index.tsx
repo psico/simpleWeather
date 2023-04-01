@@ -20,13 +20,16 @@ import {I18n} from 'i18n-js';
 import translations from '../../translations.json';
 import {getLocales} from 'react-native-localize';
 import {BannerAd, BannerAdSize} from '@react-native-admob/admob';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const Main = () => {
   console.info('Main component');
+  crashlytics().log('Simple Weather start...');
 
   const [unit, setUnit] = useState('');
   const [currentDate, setCurrentDate] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadingMessage, setLoadingMessage] = useState('');
   const {currentLatitude, currentLongitude} = CurrentPosition();
   // const bannerRef = useRef(null);
   const bannerAdUnitId = 'ca-app-pub-8178989802105114/7967779841';
@@ -79,7 +82,7 @@ const Main = () => {
 
   const getWeatherCurrentPosition = async () => {
     try {
-      console.info('Requesting weather...');
+      console.info('Requesting weather...', currentLatitude, currentLongitude);
       if (currentLatitude && currentLongitude) {
         const options = {
           method: 'GET',
@@ -90,8 +93,17 @@ const Main = () => {
         setWeather(response.data);
         setLoading(false);
       }
-    } catch (error) {
-      console.error('wrong => ', error);
+      throw new Error('errorPosition');
+    } catch (error: Error | unknown) {
+      // @ts-ignore
+      if (error?.message === 'errorPosition') {
+        console.warn('warning posicion not found: ', error);
+        setTimeout(() => setLoadingMessage('check_permission'), 10000);
+      } else {
+        console.error('Error: ', error);
+        setTimeout(getWeatherCurrentPosition, 10000);
+        crashlytics().recordError(error as Error);
+      }
     }
   };
 
@@ -255,6 +267,11 @@ const Main = () => {
               <ActivityIndicator size="large" color="#ffffff" />{' '}
               {i18n.t('loading')}
             </Text>
+            {loadingMessage ? (
+              <Text style={[Styles.textSmall]}>{i18n.t(loadingMessage)}</Text>
+            ) : (
+              <Text />
+            )}
           </View>
         )}
         <BannerAd
