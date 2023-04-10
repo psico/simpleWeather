@@ -35,9 +35,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: borderDefault,
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
-    margin: 50,
-    marginTop: '80%',
-    padding: 15,
+    margin: marginDefault,
+    // marginTop: '80%',
+    // padding: 15,
   },
   transparence: {
     display: 'flex',
