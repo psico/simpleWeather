@@ -6,6 +6,8 @@ import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
 // import <FirebaseCore/FIRApp.h>
 // import “CDVGoogleAnalytics.m”
+import groovy.json.JsonSlurper
+
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -133,6 +135,22 @@ def reactNativeArchitectures() {
     return value ? value.split(",") : ["armeabi-v7a", "x86", "x86_64", "arm64-v8a"]
 }
 
+/**
+ * Get version automatically
+ */
+def getNpmVersion() {
+    def inputFile = new File("../package.json")
+    def packageJson = new JsonSlurper().parseText(inputFile.text)
+    return packageJson["version"]
+}
+/* calculated from git commits to give sequential integers */
+def getGitVersion() {
+    def process = "git rev-list master --first-parent --count".execute()
+    return process.text.toInteger()
+}
+def userVer = getNpmVersion()
+def googleVer = getGitVersion()
+
 android {
     ndkVersion rootProject.ext.ndkVersion
 
@@ -142,8 +160,8 @@ android {
         applicationId "com.squaregrape.simpleweather"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode googleVer
+        versionName userVer
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {
