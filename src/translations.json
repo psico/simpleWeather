@@ -60,7 +60,8 @@
     "check_permission": "Caso esteja demorando a carregar verifique a permissão locação geografica"
   },
   "es": {
-    "hello": "Hola!"
+    "hello": "Hola!",
+    "loading": "Cargando"
   }
 }
 
