@@ -61,7 +61,8 @@
   },
   "es": {
     "hello": "Hola!",
-    "loading": "Cargando"
+    "loading": "Cargando",
+    "feels_like": "Se siente como"
   }
 }
 
