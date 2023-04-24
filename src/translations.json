@@ -63,7 +63,8 @@
     "hello": "Hola!",
     "loading": "Cargando",
     "feels_like": "Se siente como",
-    "wind_speed": "Velocidad del viento"
+    "wind_speed": "Velocidad del viento",
+    "minimum": "Mínima"
   }
 }
 
