@@ -31,7 +31,7 @@ const Main = () => {
   const [loading, setLoading] = useState(true);
   const [loadingMessage, setLoadingMessage] = useState('');
   // console.info('Main component AAAAAAAA');
-  let {currentLatitude, currentLongitude, callLocation} = CurrentPosition();
+  let {currentLatitude, currentLongitude} = CurrentPosition();
   // console.info('Main component BBBBBBBB');
   // const bannerRef = useRef(null);
   const bannerAdUnitId = 'ca-app-pub-8178989802105114/7967779841';
@@ -85,7 +85,7 @@ const Main = () => {
 
   const getWeatherCurrentPosition = async () => {
     try {
-      console.info('Requesting weather...', currentLatitude, currentLongitude);
+      console.info('Requesting weather...');
 
       if (currentLatitude && currentLongitude) {
         const options = {
@@ -99,14 +99,13 @@ const Main = () => {
 
         return;
       }
-      // clearLocation();
-      callLocation();
+
       throw new Error('errorPosition');
     } catch (error: Error | unknown) {
       // @ts-ignore
       if (error?.message === 'errorPosition') {
         console.warn('warning posicion not found: ', error);
-        getWeatherCurrentPosition().then();
+        setTimeout(getWeatherCurrentPosition, 10000);
         setTimeout(() => setLoadingMessage('check_permission'), 10000);
       } else {
         console.error('Error: ', error);
