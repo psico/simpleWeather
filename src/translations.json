@@ -65,7 +65,8 @@
     "feels_like": "Se siente como",
     "wind_speed": "Velocidad del viento",
     "minimum": "Mínima",
-    "maximum": "Máxima"
+    "maximum": "Máxima",
+    "pressure": "Presion"
   }
 }
 
