@@ -31,7 +31,13 @@ const Main = () => {
   const [loading, setLoading] = useState(true);
   const [loadingMessage, setLoadingMessage] = useState('');
   // console.info('Main component AAAAAAAA');
-  let {currentLatitude, currentLongitude} = CurrentPosition();
+  let {
+    currentLatitude,
+    currentLongitude,
+    clearLocation,
+    callLocation,
+    getLocation,
+  } = CurrentPosition();
   // console.info('Main component BBBBBBBB');
   // const bannerRef = useRef(null);
   const bannerAdUnitId = 'ca-app-pub-8178989802105114/7967779841';
@@ -88,11 +94,13 @@ const Main = () => {
       console.info('Requesting weather...');
 
       if (currentLatitude && currentLongitude) {
+        const url = `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`;
         const options = {
           method: 'GET',
-          url: `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`,
+          url,
         };
 
+        console.log('requesting ==> ', url);
         const response = await axios.request(options);
         setWeather(response.data);
         setLoading(false);
@@ -105,6 +113,10 @@ const Main = () => {
       // @ts-ignore
       if (error?.message === 'errorPosition') {
         console.warn('warning posicion not found: ', error);
+
+        clearLocation();
+        callLocation();
+
         setTimeout(getWeatherCurrentPosition, 10000);
         setTimeout(() => setLoadingMessage('check_permission'), 10000);
       } else {
