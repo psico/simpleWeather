@@ -22,30 +22,24 @@ import {getLocales} from 'react-native-localize';
 import {BannerAd, BannerAdSize} from '@react-native-admob/admob';
 import crashlytics from '@react-native-firebase/crashlytics';
 
+type WeatherDataType = {
+  list: {
+    dt: number;
+  }[];
+};
 const Main = () => {
   console.info('Main component');
   crashlytics().log('Simple Weather start...');
+
+  const bannerAdUnitId = 'ca-app-pub-8178989802105114/7967779841';
+  const i18n = useMemo(() => new I18n(translations), []);
+  i18n.defaultLocale = 'en';
+  i18n.locale = getLocales()[0].languageCode;
 
   const [unit, setUnit] = useState('');
   const [currentDate, setCurrentDate] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loadingMessage, setLoadingMessage] = useState('');
-  // console.info('Main component AAAAAAAA');
-  let {
-    currentLatitude,
-    currentLongitude,
-    clearLocation,
-    callLocation,
-    getLocation,
-  } = CurrentPosition();
-  // console.info('Main component BBBBBBBB');
-  // const bannerRef = useRef(null);
-  const bannerAdUnitId = 'ca-app-pub-8178989802105114/7967779841';
-  const i18n = useMemo(() => new I18n(translations), []);
-  // const i18n = new I18n(translations);
-  i18n.defaultLocale = 'en';
-  i18n.locale = getLocales()[0].languageCode;
-  // console.info('Main component CCCCCC');
   const [weather, setWeather] = useState({
     cod: '',
     city: {
@@ -89,28 +83,35 @@ const Main = () => {
     ],
   });
 
+  let {currentLatitude, currentLongitude, clearLocation, callLocation} =
+    CurrentPosition();
+
   const getWeatherCurrentPosition = async () => {
     try {
       console.info('Requesting weather...');
 
       if (currentLatitude && currentLongitude) {
-        const url = `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`;
-        const options = {
+        const weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?cnt=40&lat=${currentLatitude}&lon=${currentLongitude}&units=${unit}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}`;
+        const weatherOptions = {
           method: 'GET',
-          url,
+          url: weatherUrl,
         };
 
-        console.log('requesting ==> ', url);
-        const response = await axios.request(options);
-        setWeather(response.data);
+        console.log('requesting ==> ', weatherUrl);
+        const {data: weatherData}: {data: WeatherDataType} =
+          await axios.request(weatherOptions);
+
+        // @ts-ignore
+        setWeather(weatherData);
         setLoading(false);
 
         return;
       }
 
       throw new Error('errorPosition');
-    } catch (error: Error | unknown) {
-      // @ts-ignore
+    } catch (errorObj: unknown) {
+      const error = errorObj as Error;
+
       if (error?.message === 'errorPosition') {
         console.warn('warning posicion not found: ', error);
 
@@ -126,12 +127,9 @@ const Main = () => {
       }
     }
   };
-  // getWeatherCurrentPosition().then();
-  // console.info('Main component DDDDD');
-  // callLocation();
-  // console.info('Main component EEEEEE');
+
   setInterval(getWeatherCurrentPosition, 60000);
-  // console.info('Main component ffffffffff');
+
   const filterNextDays = () => {
     // @ts-ignore
     const firstDate = new Date(weather.list[0].dt * 1000);
@@ -159,6 +157,13 @@ const Main = () => {
     console.info('111111111');
     getWeatherCurrentPosition().then();
   }, [currentLatitude, currentLongitude]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getWeatherCurrentPosition();
+    }, 60000);
+    return () => clearInterval(interval);
+  }, []); // Clear interval on unmount.
 
   return (
     <LinearGradient
