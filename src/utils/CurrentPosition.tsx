@@ -65,6 +65,8 @@ const CurrentPosition = () => {
   return {
     currentLatitude,
     currentLongitude,
+    callLocation,
+    getLocation,
     clearLocation,
   };
 };
