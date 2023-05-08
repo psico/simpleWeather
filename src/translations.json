@@ -69,7 +69,8 @@
     "pressure": "Presion",
     "humidity": "Humedad",
 
-    "Thunderstorm": "Tormenta"
+    "Thunderstorm": "Tormenta",
+    "Drizzle": "Llovizna"
   }
 }
 
