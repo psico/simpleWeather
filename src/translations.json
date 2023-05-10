@@ -70,7 +70,8 @@
     "humidity": "Humedad",
 
     "Thunderstorm": "Tormenta",
-    "Drizzle": "Llovizna"
+    "Drizzle": "Llovizna",
+    "Rain": "Chuva"
   }
 }
 
