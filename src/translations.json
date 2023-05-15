@@ -72,7 +72,8 @@
     "Thunderstorm": "Tormenta",
     "Drizzle": "Llovizna",
     "Rain": "Chuva",
-    "Snow": "Nieve"
+    "Snow": "Nieve",
+    "snow": "Nieve"
   }
 }
 
