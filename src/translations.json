@@ -78,7 +78,8 @@
     "Mist": "Niebla",
     "Smoke": "Fumar",
     "Haze": "Bruma",
-    "Dust": "Polvo"
+    "Dust": "Polvo",
+    "Fog": "Niebla"
   }
 }
 
