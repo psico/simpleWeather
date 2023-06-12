@@ -85,7 +85,9 @@
     "Squall": "Tormenta",
     "Tornado": "Tornado",
     "Clear": "Claro",
-    "Clouds": "Nubes"
+    "Clouds": "Nubes",
+
+    "check_permission": "Si está tardando demasiado en cargar, verifique el permiso de geolocalización"
   }
 }
 
