@@ -90,7 +90,8 @@
     "check_permission": "Si está tardando demasiado en cargar, verifique el permiso de geolocalización"
   },
   "fr": {
-    "hello": "Bonjour!"
+    "hello": "Bonjour!",
+    "loading": "Chargement"
   }
 }
 
