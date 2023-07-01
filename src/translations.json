@@ -93,7 +93,8 @@
     "hello": "Bonjour!",
     "loading": "Chargement",
     "feels_like": "Se sent comme",
-    "wind_speed": "Vitesse du vent"
+    "wind_speed": "Vitesse du vent",
+    "minimum": "Le minimum"
   }
 }
 
