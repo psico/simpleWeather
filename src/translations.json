@@ -92,7 +92,8 @@
   "fr": {
     "hello": "Bonjour!",
     "loading": "Chargement",
-    "feels_like": "Se sent comme"
+    "feels_like": "Se sent comme",
+    "wind_speed": "Vitesse du vent"
   }
 }
 
