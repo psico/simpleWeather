@@ -96,7 +96,8 @@
     "wind_speed": "Vitesse du vent",
     "minimum": "Le minimum",
     "maximum": "Maximum",
-    "pressure": "Pression"
+    "pressure": "Pression",
+    "humidity": "Humidité"
   }
 }
 
