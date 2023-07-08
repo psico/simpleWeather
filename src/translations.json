@@ -97,7 +97,9 @@
     "minimum": "Le minimum",
     "maximum": "Maximum",
     "pressure": "Pression",
-    "humidity": "Humidité"
+    "humidity": "Humidité",
+
+    "Thunderstorm": "Orage"
   }
 }
 
