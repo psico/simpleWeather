@@ -99,7 +99,8 @@
     "pressure": "Pression",
     "humidity": "Humidité",
 
-    "Thunderstorm": "Orage"
+    "Thunderstorm": "Orage",
+    "Drizzle": "Bruine"
   }
 }
 
