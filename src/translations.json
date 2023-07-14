@@ -100,7 +100,8 @@
     "humidity": "Humidité",
 
     "Thunderstorm": "Orage",
-    "Drizzle": "Bruine"
+    "Drizzle": "Bruine",
+    "Rain": "Pluie"
   }
 }
 
