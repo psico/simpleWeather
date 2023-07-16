@@ -101,7 +101,8 @@
 
     "Thunderstorm": "Orage",
     "Drizzle": "Bruine",
-    "Rain": "Pluie"
+    "Rain": "Pluie",
+    "Snow": "Neige"
   }
 }
 
