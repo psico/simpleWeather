@@ -43,7 +43,7 @@
     "Drizzle": "Chuvisco",
     "Rain": "Chuva",
     "Snow": "Neve",
-    "snow": "Snow",
+    "snow": "Neve",
     "Atmosphere": "Atmosfera",
     "Mist": "Névoa",
     "Smoke": "Fumaça",
@@ -102,7 +102,8 @@
     "Thunderstorm": "Orage",
     "Drizzle": "Bruine",
     "Rain": "Pluie",
-    "Snow": "Neige"
+    "Snow": "Neige",
+    "snow": "Neige"
   }
 }
 
