@@ -108,7 +108,8 @@
     "Mist": "Brume",
     "Smoke": "Fumée",
     "Haze": "Brume",
-    "Dust": "Poussière"
+    "Dust": "Poussière",
+    "Fog": "Brouillard"
   }
 }
 
