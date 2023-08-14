@@ -115,7 +115,9 @@
     "Squall": "Bourrasque",
     "Tornado": "Tornade",
     "Clear": "Clair",
-    "Clouds": "Des nuages"
+    "Clouds": "Des nuages",
+
+    "check_permission": "Si le chargement prend trop de temps, vérifiez l'autorisation de géolocalisation"
   }
 }
 
