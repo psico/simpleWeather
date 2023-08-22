@@ -97,7 +97,6 @@ const Main = () => {
           url: weatherUrl,
         };
 
-        console.log('requesting ==> ', weatherUrl);
         const {data: weatherData}: {data: WeatherDataType} =
           await axios.request(weatherOptions);
 
