@@ -153,7 +153,6 @@ const Main = () => {
   // }, [getWeatherCurrentPosition]);
 
   useEffect(() => {
-    console.info('111111111');
     getWeatherCurrentPosition().then();
   }, [currentLatitude, currentLongitude]);
 
