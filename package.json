@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-admob/admob": "^2.0.1",
+    "@react-native-community/cli-doctor": "^11.3.7",
     "@react-native-community/geolocation": "^3.0.4",
     "@react-native-firebase/app": "^17.4.0",
     "@react-native-firebase/crashlytics": "^17.4.0",
