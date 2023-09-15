@@ -155,6 +155,7 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.squaregrape.simpleweather"
